@@ -19,3 +19,8 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct Prescription: Identifiable {
+    let id = UUID()
+    
+}
