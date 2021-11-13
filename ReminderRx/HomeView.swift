@@ -15,7 +15,6 @@ struct HomeView: View {
         Prescription(name: "Drug 4", count: 56),
         Prescription(name: "Drug 5", count: 34),
         Prescription(name: "Drug 6", count: 2)
-
     ]
     
     var body: some View {

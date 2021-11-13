@@ -11,6 +11,7 @@
 		551573E4273B5D490048F779 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573E3273B5D490048F779 /* HomeView.swift */; };
 		551573E6273B5D4A0048F779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E5273B5D4A0048F779 /* Assets.xcassets */; };
 		551573E9273B5D4A0048F779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E8273B5D4A0048F779 /* Preview Assets.xcassets */; };
+		551573F0273F5B060048F779 /* PrescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573EF273F5B060048F779 /* PrescriptionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		551573E3273B5D490048F779 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		551573E5273B5D4A0048F779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551573E8273B5D4A0048F779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		551573EF273F5B060048F779 /* PrescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				551573E1273B5D490048F779 /* ReminderRxApp.swift */,
 				551573E3273B5D490048F779 /* HomeView.swift */,
+				551573EF273F5B060048F779 /* PrescriptionCell.swift */,
 				551573E5273B5D4A0048F779 /* Assets.xcassets */,
 				551573E7273B5D4A0048F779 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
+				551573F0273F5B060048F779 /* PrescriptionCell.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
