@@ -16,11 +16,16 @@ struct HomeView: View {
         Prescription(name: "Drug 5", count: 34),
         Prescription(name: "Drug 6", count: 2)
     ]
+    @State var isTapped = false
     
     var body: some View {
         NavigationView {
             List(exampleArray) { example in
-                Text(example.name)
+                Button {
+                    isTapped.toggle()
+                } label: {
+                    PrescriptionCell(prescription: example, isOn: isTapped)
+                }
             }.listStyle(PlainListStyle())
             .navigationTitle("Reminder RX")
         }

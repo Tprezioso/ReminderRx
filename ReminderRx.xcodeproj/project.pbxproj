@@ -54,8 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				551573E1273B5D490048F779 /* ReminderRxApp.swift */,
-				551573E3273B5D490048F779 /* HomeView.swift */,
-				551573EF273F5B060048F779 /* PrescriptionCell.swift */,
+				551573F1273F72F70048F779 /* Views */,
 				551573E5273B5D4A0048F779 /* Assets.xcassets */,
 				551573E7273B5D4A0048F779 /* Preview Content */,
 			);
@@ -68,6 +67,15 @@
 				551573E8273B5D4A0048F779 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		551573F1273F72F70048F779 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				551573E3273B5D490048F779 /* HomeView.swift */,
+				551573EF273F5B060048F779 /* PrescriptionCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +289,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,6 +319,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
