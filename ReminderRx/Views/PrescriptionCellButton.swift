@@ -35,7 +35,7 @@ struct PrescriptionCellButton: View {
                     }
                 }
                 Spacer()
-                isOn ? Image(systemName: "checkmark.circle.fill").font(.title2) : Image(systemName: "circle").font(.title2)
+                isOn ? Image(systemName: "checkmark.circle.fill").font(.title2).foregroundColor(.green) : Image(systemName: "circle").font(.title2).foregroundColor(.green)
             }
         }
     }

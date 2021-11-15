@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
     var exampleArray = [
         Prescription(name: "Drug 1", count: 99),
         Prescription(name: "Drug 2", count: 10),
@@ -21,15 +25,10 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List(exampleArray) { example in
-                Button {
-                    isTapped.toggle()
-                } label: {
-                    PrescriptionCellButton(prescription: example)
-                }
-                
-            }
-            .navigationTitle("Reminder RX")
-        }.accentColor(.green)
+                PrescriptionCellButton(prescription: example)
+            }.listStyle(PlainListStyle())
+                .navigationTitle("Reminder RX")
+        }
     }
 }
 
