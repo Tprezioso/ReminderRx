@@ -24,11 +24,12 @@ struct HomeView: View {
                 Button {
                     isTapped.toggle()
                 } label: {
-                    PrescriptionCell(prescription: example, isOn: isTapped)
+                    PrescriptionCellButton(prescription: example)
                 }
-            }.listStyle(PlainListStyle())
+                
+            }
             .navigationTitle("Reminder RX")
-        }
+        }.accentColor(.green)
     }
 }
 
@@ -42,5 +43,6 @@ struct Prescription: Identifiable {
     let id = UUID()
     var name = ""
     var count = 0
+    @State var isOn = false
     
 }
