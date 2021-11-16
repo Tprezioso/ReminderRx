@@ -14,7 +14,8 @@ struct PrescriptionCellButton: View {
     
     var body: some View {
         Button {
-            isOn.toggle()
+            isOn = true
+            prescription.count -= 1
         } label: {
             HStack {
                 VStack {

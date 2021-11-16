@@ -12,19 +12,11 @@ struct HomeView: View {
         UITableView.appearance().backgroundColor = .clear
     }
     
-    var exampleArray = [
-        Prescription(name: "Drug 1", count: 99),
-        Prescription(name: "Drug 2", count: 10),
-        Prescription(name: "Drug 3", count: 12),
-        Prescription(name: "Drug 4", count: 56),
-        Prescription(name: "Drug 5", count: 34),
-        Prescription(name: "Drug 6", count: 2)
-    ]
-    @State var isTapped = false
+    @StateObject var stateModel = HomeViewStateModel()
     
     var body: some View {
         NavigationView {
-            List(exampleArray) { example in
+            List(stateModel.exampleArray) { example in
                 PrescriptionCellButton(prescription: example)
             }.listStyle(PlainListStyle())
                 .navigationTitle("Reminder RX")
@@ -38,10 +30,14 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct Prescription: Identifiable {
+class Prescription: Identifiable {
     let id = UUID()
     var name = ""
     var count = 0
     @State var isOn = false
     
+    init(name: String, count: Int) {
+        self.name = name
+        self.count = count
+    }
 }
