@@ -7,11 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-    }
-    
+struct HomeView: View {    
     @StateObject var stateModel = HomeViewStateModel()
     
     var body: some View {
