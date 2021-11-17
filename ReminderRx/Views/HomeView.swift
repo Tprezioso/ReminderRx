@@ -15,7 +15,7 @@ struct HomeView: View {
             List(stateModel.exampleArray) { example in
                 PrescriptionCellButton(prescription: example)
             }.listStyle(PlainListStyle())
-                .navigationTitle("Reminder RX")
+            .navigationTitle("Reminder RX")
         }
     }
 }
