@@ -13,9 +13,11 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List(stateModel.exampleArray) { example in
-                PrescriptionCellButton(prescription: example)
+                PrescriptionCellButton(prescription: example, isOn: stateModel.isItaNewDay)
             }.listStyle(PlainListStyle())
             .navigationTitle("Reminder RX")
+        }.onAppear {
+            stateModel.checkIfItsANewDay()
         }
     }
 }

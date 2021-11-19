@@ -10,7 +10,7 @@ import SwiftUI
 struct PrescriptionCellButton: View {
     
     var prescription: Prescription
-    @State var isOn = false
+    @State var isOn: Bool
     
     var body: some View {
         Button {
