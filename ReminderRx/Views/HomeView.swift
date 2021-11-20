@@ -24,11 +24,16 @@ struct HomeView: View {
                         Button {
                             stateModel.plusButtonTapped.toggle()
                         } label: {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 75, height: 75)
-                                .foregroundColor(.blue)
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(.white)
+                                    .frame(width: 70, height: 70)
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 75, height: 75)
+                                    .foregroundColor(.blue)
                                 .padding()
+                            }
                             
                         }
                         //                        .sheet(isPresented: $stateModel.plusButtonTapped){
@@ -38,7 +43,7 @@ struct HomeView: View {
                 }
                 BottomSheetView(
                     isOpen: $stateModel.plusButtonTapped,
-                    maxHeight: CGFloat(200)
+                    maxHeight: CGFloat(400)
                     
                 ) {
                     EmptyView()
