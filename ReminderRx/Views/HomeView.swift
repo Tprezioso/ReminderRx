@@ -12,10 +12,39 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            List(stateModel.exampleArray) { example in
-                PrescriptionCellButton(prescription: example, isOn: stateModel.isItaNewDay)
-            }.listStyle(PlainListStyle())
-            .navigationTitle("Reminder RX")
+            ZStack {
+                List(stateModel.exampleArray) { example in
+                    PrescriptionCellButton(prescription: example, isOn: stateModel.isANewDay)
+                }.listStyle(PlainListStyle())
+                    .navigationTitle("Reminder RX")
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        Button {
+                            stateModel.plusButtonTapped.toggle()
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 75, height: 75)
+                                .foregroundColor(.blue)
+                                .padding()
+                            
+                        }
+                        //                        .sheet(isPresented: $stateModel.plusButtonTapped){
+                        //
+                        //                        }
+                    }
+                }
+                BottomSheetView(
+                    isOpen: $stateModel.plusButtonTapped,
+                    maxHeight: CGFloat(200)
+                    
+                ) {
+                    EmptyView()
+                }
+
+            }
         }.onAppear {
             stateModel.checkIfItsANewDay()
         }

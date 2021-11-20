@@ -20,7 +20,8 @@ class HomeViewStateModel: ObservableObject {
     @Published var lastDate = Date()
     @Published var currentDate = Date()
     @Published var currentDateString = String()
-    @Published var isItaNewDay = false
+    @Published var isANewDay = false
+    @Published var plusButtonTapped = false
 
     func checkIfItsANewDay() {
         let formatter = DateFormatter()
@@ -34,7 +35,7 @@ class HomeViewStateModel: ObservableObject {
         currentDateString = formatter.string(from: currentDate)
         //sets currentDateString for every time app launches
         if lastDateString != currentDateString {
-            isItaNewDay = true
+            isANewDay = true
         }
         
     }
