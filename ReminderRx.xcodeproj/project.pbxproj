@@ -14,6 +14,7 @@
 		551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573EF273F5B060048F779 /* PrescriptionCellButton.swift */; };
 		551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573F2274339D30048F779 /* HomeViewStateModel.swift */; };
 		5535BDF92749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */; };
+		5535BDFB27494866008729F8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFA27494866008729F8 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		551573EF273F5B060048F779 /* PrescriptionCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionCellButton.swift; sourceTree = "<group>"; };
 		551573F2274339D30048F779 /* HomeViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStateModel.swift; sourceTree = "<group>"; };
 		5535BDF82749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrescriptionDataModel.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
+		5535BDFA27494866008729F8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,8 +43,8 @@
 		551573D5273B5D490048F779 = {
 			isa = PBXGroup;
 			children = (
-				5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */,
 				551573E0273B5D490048F779 /* ReminderRx */,
+				5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */,
 				551573DF273B5D490048F779 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +63,7 @@
 				551573E1273B5D490048F779 /* ReminderRxApp.swift */,
 				551573F1273F72F70048F779 /* Views */,
 				551573E5273B5D4A0048F779 /* Assets.xcassets */,
+				5535BDFC27494895008729F8 /* Managers */,
 				551573E7273B5D4A0048F779 /* Preview Content */,
 			);
 			path = ReminderRx;
@@ -82,6 +85,14 @@
 				551573EF273F5B060048F779 /* PrescriptionCellButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5535BDFC27494895008729F8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5535BDFA27494866008729F8 /* CoreDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5535BDFB27494866008729F8 /* CoreDataManager.swift in Sources */,
 				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
 				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
 				551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */,

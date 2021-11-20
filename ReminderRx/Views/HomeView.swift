@@ -28,7 +28,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-class Prescription: Identifiable {
+class Prescriptions: Identifiable {
     let id = UUID()
     var name = ""
     var count = 0
