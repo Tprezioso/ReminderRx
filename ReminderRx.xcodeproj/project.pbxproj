@@ -13,6 +13,7 @@
 		551573E9273B5D4A0048F779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E8273B5D4A0048F779 /* Preview Assets.xcassets */; };
 		551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573EF273F5B060048F779 /* PrescriptionCellButton.swift */; };
 		551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573F2274339D30048F779 /* HomeViewStateModel.swift */; };
+		5535BDF92749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		551573E8273B5D4A0048F779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		551573EF273F5B060048F779 /* PrescriptionCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionCellButton.swift; sourceTree = "<group>"; };
 		551573F2274339D30048F779 /* HomeViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStateModel.swift; sourceTree = "<group>"; };
+		5535BDF82749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrescriptionDataModel.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 		551573D5273B5D490048F779 = {
 			isa = PBXGroup;
 			children = (
+				5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */,
 				551573E0273B5D490048F779 /* ReminderRx */,
 				551573DF273B5D490048F779 /* Products */,
 			);
@@ -155,6 +158,7 @@
 				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
 				551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
+				5535BDF92749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +363,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5535BDF82749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodel */,
+			);
+			currentVersion = 5535BDF82749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodel */;
+			path = PrescriptionDataModel.xcdatamodeld.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 551573D6273B5D490048F779 /* Project object */;
 }
