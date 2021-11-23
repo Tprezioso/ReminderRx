@@ -36,18 +36,18 @@ struct HomeView: View {
                             }
                             
                         }
-                        //                        .sheet(isPresented: $stateModel.plusButtonTapped){
-                        //
-                        //                        }
+                        .sheet(isPresented: $stateModel.plusButtonTapped){
+                            AddRxView(isShowingDetail: $stateModel.plusButtonTapped)
+                        }
                     }
                 }
-                BottomSheetView(
-                    isOpen: $stateModel.plusButtonTapped,
-                    maxHeight: CGFloat(400)
-                    
-                ) {
-                    EmptyView()
-                }
+//                BottomSheetView(
+//                    isOpen: $stateModel.plusButtonTapped,
+//                    maxHeight: CGFloat(400)
+//
+//                ) {
+//                    EmptyView()
+//                }
 
             }
         }.onAppear {
