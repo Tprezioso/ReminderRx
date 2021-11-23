@@ -15,14 +15,25 @@ struct AddRxView: View {
     
     var body: some View {
         ZStack {
-            Form {
-                Section(header: Text("New Rx")) {
-                    TextField("Rx Name", text: $name)
-                    TextField("Number of Pills", text: $count)
-                        .keyboardType(.numberPad)
-                    TextField("Refills", text: $refills)
-                        .keyboardType(.numberPad)
-                }.navigationTitle("Add Prescription")
+            NavigationView {
+                VStack {
+                    List {
+                        Section(header: Text("New Rx")) {
+                            TextField("Rx Name", text: $name)
+                            TextField("Number of Pills", text: $count)
+                                .keyboardType(.numberPad)
+                            TextField("Refills", text: $refills)
+                                .keyboardType(.numberPad)
+                        }.navigationTitle("Add Prescription")
+                    }.listStyle(PlainListStyle())
+                    Spacer()
+                    Button {
+                        print("Save pill")
+                        isShowingDetail = false
+                    } label: {
+                        Text("Save")
+                    }
+                }
             }
             VStack {
                 HStack {
@@ -35,6 +46,7 @@ struct AddRxView: View {
                 }
                 Spacer()
             }
+
         }
     }
 }
