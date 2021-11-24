@@ -32,6 +32,13 @@ struct AddRxView: View {
                         isShowingDetail = false
                     } label: {
                         Text("Save")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .frame(width: 300, height: 50)
+                            .foregroundColor(.white)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                            .padding(.bottom)
                     }
                 }
             }
