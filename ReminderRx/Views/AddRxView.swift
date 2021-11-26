@@ -31,14 +31,7 @@ struct AddRxView: View {
                         print("Save pill")
                         isShowingDetail = false
                     } label: {
-                        Text("Save")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .frame(width: 300, height: 50)
-                            .foregroundColor(.white)
-                            .background(Color.green)
-                            .cornerRadius(10)
-                            .padding(.bottom)
+                        SaveButtonView()
                     }
                 }
             }
@@ -63,5 +56,18 @@ struct AddRxView_Previews: PreviewProvider {
         NavigationView {
             AddRxView(isShowingDetail: .constant(true))
         }
+    }
+}
+
+struct SaveButtonView: View {
+    var body: some View {
+        Text("Save")
+            .font(.title3)
+            .fontWeight(.semibold)
+            .frame(width: 300, height: 50)
+            .foregroundColor(.white)
+            .background(Color.green)
+            .cornerRadius(10)
+            .padding(.bottom)
     }
 }

@@ -35,7 +35,7 @@ class HomeViewStateModel: ObservableObject {
         currentDateString = formatter.string(from: currentDate)
         //sets currentDateString for every time app launches
         if lastDateString != currentDateString {
-            isANewDay = true
+            self.isANewDay = false
         }
         
     }
