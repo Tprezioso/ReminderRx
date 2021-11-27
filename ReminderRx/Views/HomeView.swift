@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {    
     @StateObject var stateModel = HomeViewStateModel()
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         NavigationView {
@@ -50,8 +51,17 @@ struct HomeView: View {
 //                }
 
             }
-        }.onAppear {
-            stateModel.checkIfItsANewDay()
+        }.onChange(of: scenePhase) { newPhase in
+            if newPhase == .inactive {
+                print("Inactive")
+            } else if newPhase == .active {
+                stateModel.checkIfItsANewDay()
+            } else if newPhase == .background {
+                print("Background")
+            }
+        }
+        .onAppear {
+            
         }
     }
 }
