@@ -5,7 +5,7 @@
 //  Created by Thomas Prezioso Jr on 11/15/21.
 //
 
-import Foundation
+import SwiftUI
 
 class HomeViewStateModel: ObservableObject {
     @Published var exampleArray = [
@@ -16,7 +16,8 @@ class HomeViewStateModel: ObservableObject {
         Prescriptions(name: "Drug 5", count: 34),
         Prescriptions(name: "Drug 6", count: 2)
     ]
-    @Published private var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
+    @AppStorage("lastDateString") var lastDateString: String = ""
+//    @Published private var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
     @Published var lastDate = Date()
     @Published var currentDate = Date()
     @Published var currentDateString = String()
@@ -28,7 +29,8 @@ class HomeViewStateModel: ObservableObject {
         formatter.dateFormat = "d MM y"
         if lastDateString == String() {
             lastDateString = formatter.string(from: lastDate)
-            UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
+            
+//            UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
         } //sets initial value for lastDateString for first time app ever launches
         
         self.currentDate = Date()
