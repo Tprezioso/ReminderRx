@@ -38,7 +38,7 @@ struct HomeView: View {
                             
                         }
                         .sheet(isPresented: $stateModel.plusButtonTapped){
-                            AddRxView(isShowingDetail: $stateModel.plusButtonTapped)
+                            AddRxView(isShowingDetail: $stateModel.plusButtonTapped, coreDM: stateModel.coreDM)
                         }
                     }
                 }
@@ -76,6 +76,7 @@ class Prescriptions: Identifiable {
     let id = UUID()
     var name = ""
     var count = 0
+    var refills = 0
     @State var isOn = false
     
     init(name: String, count: Int) {

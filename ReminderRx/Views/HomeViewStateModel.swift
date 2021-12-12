@@ -8,6 +8,7 @@
 import SwiftUI
 
 class HomeViewStateModel: ObservableObject {
+    @Published var coreDM = CoreDataManager()
     @Published var exampleArray = [
         Prescriptions(name: "Drug 1", count: 99),
         Prescriptions(name: "Drug 2", count: 10),

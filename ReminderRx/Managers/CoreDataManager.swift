@@ -20,10 +20,20 @@ class CoreDataManager {
         }
     }
     
-    func savePrescription(name: String, count: Int64, isOn: Bool) {
+    func getPrescription() -> [Prescription] {
+        let fetchRequest: NSFetchRequest<Prescription> = Prescription.fetchRequest()
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    
+    func savePrescription(name: String, count: Int64, refills: Int64, isOn: Bool) {
         let rx = Prescription(context: persistentContainer.viewContext)
         rx.name = name
         rx.count = count
+        rx.refills = refills
         rx.isOn = isOn
         
         do {
