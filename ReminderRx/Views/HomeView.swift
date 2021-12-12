@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View {    
     @StateObject var stateModel = HomeViewStateModel()
+    @FetchRequest(sortDescriptors: []) var prescriptions: FetchedResults<Prescriptions>
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
@@ -38,7 +40,7 @@ struct HomeView: View {
                             
                         }
                         .sheet(isPresented: $stateModel.plusButtonTapped){
-                            AddRxView(isShowingDetail: $stateModel.plusButtonTapped, coreDM: stateModel.coreDM)
+                            AddRxView(isShowingDetail: $stateModel.plusButtonTapped)
                         }
                     }
                 }
@@ -61,7 +63,7 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            
+
         }
     }
 }
@@ -72,8 +74,8 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-class Prescriptions: Identifiable {
-    let id = UUID()
+class Prescription: Identifiable {
+    var id = UUID()
     var name = ""
     var count = 0
     var refills = 0

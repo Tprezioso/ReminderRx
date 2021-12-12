@@ -12,7 +12,7 @@ struct AddRxView: View {
     @State var count = ""
     @State var refills = ""
     @Binding var isShowingDetail: Bool
-    let coreDM: CoreDataManager
+    @Environment(\.managedObjectContext) var moc
     
     var body: some View {
         ZStack {
@@ -30,7 +30,14 @@ struct AddRxView: View {
                     Spacer()
                     Button {
                         print("Save pill")
-                        coreDM.savePrescription(name: name, count: Int64(count) ?? 0, refills: Int64(refills) ?? 0, isOn: false)
+                        let savedPrescription = Prescriptions(context: moc)
+                        savedPrescription.id = UUID()
+                        savedPrescription.name = name
+                        savedPrescription.count = Int64(count) ?? 0
+                        savedPrescription.refills = Int64(refills) ?? 0
+                        savedPrescription.isOn = false
+                        try? moc.save()
+//                        coreDM.savePrescription(name: name, count: Int64(count) ?? 0, refills: Int64(refills) ?? 0, isOn: false)
                         isShowingDetail = false
                     } label: {
                         SaveButtonView()
@@ -56,7 +63,7 @@ struct AddRxView: View {
 struct AddRxView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddRxView(isShowingDetail: .constant(true), coreDM: CoreDataManager())
+            AddRxView(isShowingDetail: .constant(true))
         }
     }
 }

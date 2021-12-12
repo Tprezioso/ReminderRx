@@ -8,14 +8,14 @@
 import SwiftUI
 
 class HomeViewStateModel: ObservableObject {
-    @Published var coreDM = CoreDataManager()
+//    @Published var coreDM = CoreDataManager()
     @Published var exampleArray = [
-        Prescriptions(name: "Drug 1", count: 99),
-        Prescriptions(name: "Drug 2", count: 10),
-        Prescriptions(name: "Drug 3", count: 12),
-        Prescriptions(name: "Drug 4", count: 56),
-        Prescriptions(name: "Drug 5", count: 34),
-        Prescriptions(name: "Drug 6", count: 2)
+        Prescription(name: "Drug 1", count: 99),
+        Prescription(name: "Drug 2", count: 10),
+        Prescription(name: "Drug 3", count: 12),
+        Prescription(name: "Drug 4", count: 56),
+        Prescription(name: "Drug 5", count: 34),
+        Prescription(name: "Drug 6", count: 2)
     ]
     @AppStorage("lastDateString") var lastDateString: String = ""
 //    @Published private var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()

@@ -13,11 +13,11 @@
 		551573E9273B5D4A0048F779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E8273B5D4A0048F779 /* Preview Assets.xcassets */; };
 		551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573EF273F5B060048F779 /* PrescriptionCellButton.swift */; };
 		551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573F2274339D30048F779 /* HomeViewStateModel.swift */; };
-		5535BDF92749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */; };
-		5535BDFB27494866008729F8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFA27494866008729F8 /* CoreDataManager.swift */; };
+		5535BDFB27494866008729F8 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFA27494866008729F8 /* PersistenceController.swift */; };
 		5535BDFE27495395008729F8 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFD27495395008729F8 /* BottomSheetView.swift */; };
 		5535BE002749A673008729F8 /* AddRxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFF2749A673008729F8 /* AddRxView.swift */; };
 		5535BE022749B682008729F8 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BE012749B682008729F8 /* XDismissButton.swift */; };
+		5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,11 +28,11 @@
 		551573E8273B5D4A0048F779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		551573EF273F5B060048F779 /* PrescriptionCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionCellButton.swift; sourceTree = "<group>"; };
 		551573F2274339D30048F779 /* HomeViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStateModel.swift; sourceTree = "<group>"; };
-		5535BDF82749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrescriptionDataModel.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
-		5535BDFA27494866008729F8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5535BDFA27494866008729F8 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		5535BDFD27495395008729F8 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		5535BDFF2749A673008729F8 /* AddRxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRxView.swift; sourceTree = "<group>"; };
 		5535BE012749B682008729F8 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
+		5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Prescriptions.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				551573E0273B5D490048F779 /* ReminderRx */,
-				5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */,
+				5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */,
 				551573DF273B5D490048F779 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 		5535BDFC27494895008729F8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				5535BDFA27494866008729F8 /* CoreDataManager.swift */,
+				5535BDFA27494866008729F8 /* PersistenceController.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -175,14 +175,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5535BE002749A673008729F8 /* AddRxView.swift in Sources */,
-				5535BDFB27494866008729F8 /* CoreDataManager.swift in Sources */,
+				5535BDFB27494866008729F8 /* PersistenceController.swift in Sources */,
 				5535BE022749B682008729F8 /* XDismissButton.swift in Sources */,
 				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
 				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
 				551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */,
 				5535BDFE27495395008729F8 /* BottomSheetView.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
-				5535BDF92749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld in Sources */,
+				5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,13 +389,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5535BDF72749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodeld */ = {
+		5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5535BDF82749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodel */,
+				5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */,
 			);
-			currentVersion = 5535BDF82749458D008729F8 /* PrescriptionDataModel.xcdatamodeld.xcdatamodel */;
-			path = PrescriptionDataModel.xcdatamodeld.xcdatamodeld;
+			currentVersion = 5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */;
+			path = Prescriptions.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

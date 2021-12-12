@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrescriptionCellButton: View {
     
-    var prescription: Prescriptions
+    var prescription: Prescription
     @State var isOn: Bool
     
     var body: some View {
@@ -44,6 +44,6 @@ struct PrescriptionCellButton: View {
 
 struct PrescriptionCellButton_Previews: PreviewProvider {
     static var previews: some View {
-        PrescriptionCellButton(prescription: Prescriptions(name: "Pills", count: 99), isOn: true)
+        PrescriptionCellButton(prescription: Prescription(name: "Pills", count: 99), isOn: true)
     }
 }
