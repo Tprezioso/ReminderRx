@@ -37,7 +37,6 @@ struct AddRxView: View {
                         savedPrescription.refills = Int64(refills) ?? 0
                         savedPrescription.isOn = false
                         try? moc.save()
-//                        coreDM.savePrescription(name: name, count: Int64(count) ?? 0, refills: Int64(refills) ?? 0, isOn: false)
                         isShowingDetail = false
                     } label: {
                         SaveButtonView()
@@ -55,7 +54,6 @@ struct AddRxView: View {
                 }
                 Spacer()
             }
-
         }
     }
 }

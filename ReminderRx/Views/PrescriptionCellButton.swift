@@ -8,31 +8,32 @@
 import SwiftUI
 
 struct PrescriptionCellButton: View {
-    
-    var prescription: Prescription
+    var name: String
+    var count: Int64
+    var refill: Int64
     @State var isOn: Bool
     
     var body: some View {
         Button {
             isOn = true
-            prescription.count -= 1
+//            self.count -= 1
         } label: {
             HStack {
                 VStack {
                     Text("Count")
-                    Text("\(prescription.count)")
+                    Text("\(count)")
                 }
                 .frame(height: 100)
                 .font(.title.weight(.thin))
                 VStack(alignment: .leading, spacing: 20) {
                     HStack {
                         Image(systemName: "pills.circle")
-                        Text("Name:\(prescription.name)")
+                        Text("Name:\(name)")
                     }
                     
                     HStack {
                         Image(systemName: "arrow.clockwise.circle")
-                        Text("Refill:")
+                        Text("Refill: \(refill)")
                     }
                 }
                 Spacer()
@@ -44,6 +45,6 @@ struct PrescriptionCellButton: View {
 
 struct PrescriptionCellButton_Previews: PreviewProvider {
     static var previews: some View {
-        PrescriptionCellButton(prescription: Prescription(name: "Pills", count: 99), isOn: true)
+        PrescriptionCellButton(name: "Drug 1", count: 2, refill: 2, isOn: true)
     }
 }

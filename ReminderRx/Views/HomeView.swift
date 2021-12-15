@@ -16,8 +16,8 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                List(stateModel.exampleArray) { example in
-                    PrescriptionCellButton(prescription: example, isOn: stateModel.isANewDay)
+                List(prescriptions) { example in
+                    PrescriptionCellButton(name: example.name ?? "", count: Int64(example.count), refill: Int64(example.refills), isOn: example.isOn)
                 }.listStyle(PlainListStyle())
                     .navigationTitle("Reminder RX")
                 HStack {
@@ -35,7 +35,7 @@ struct HomeView: View {
                                     .resizable()
                                     .frame(width: 75, height: 75)
                                     .foregroundColor(.blue)
-                                .padding()
+                                    .padding()
                             }
                             
                         }
@@ -44,14 +44,6 @@ struct HomeView: View {
                         }
                     }
                 }
-//                BottomSheetView(
-//                    isOpen: $stateModel.plusButtonTapped,
-//                    maxHeight: CGFloat(400)
-//
-//                ) {
-//                    EmptyView()
-//                }
-
             }
         }.onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {
@@ -63,7 +55,7 @@ struct HomeView: View {
             }
         }
         .onAppear {
-
+            print(prescriptions)
         }
     }
 }
