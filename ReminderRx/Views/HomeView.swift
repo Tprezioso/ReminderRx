@@ -12,14 +12,31 @@ struct HomeView: View {
     @StateObject var stateModel = HomeViewStateModel()
     @FetchRequest(sortDescriptors: []) var prescriptions: FetchedResults<Prescriptions>
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.managedObjectContext) var moc
     
     var body: some View {
         NavigationView {
             ZStack {
-                List(prescriptions) { example in
-                    PrescriptionCellButton(name: example.name ?? "", count: Int64(example.count), refill: Int64(example.refills), isOn: example.isOn)
-                }.listStyle(PlainListStyle())
+                List {
+                    ForEach(prescriptions) { prescription in
+                        Button {
+                            updatePrescription(prescription)
+                        } label: {
+                            PrescriptionCellButton(prescription: prescription)
+                        }
+                    }
+                    .onDelete { indexSet in
+                        for index in indexSet {
+                            moc.delete(prescriptions[index])
+                        }
+                        do {
+                            try moc.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
                     .navigationTitle("Reminder RX")
+                }.listStyle(PlainListStyle())
                 HStack {
                     Spacer()
                     VStack {
@@ -58,7 +75,19 @@ struct HomeView: View {
             print(prescriptions)
         }
     }
+    
+    func updatePrescription(_ prescription: Prescriptions) {
+        let newCount: Int64 = prescription.count - 1
+        let wasTapped = true
+        
+        moc.performAndWait {
+            prescription.count = newCount
+            prescription.isOn = wasTapped
+            try? moc.save()
+        }
+    }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -69,7 +98,7 @@ struct ContentView_Previews: PreviewProvider {
 class Prescription: Identifiable {
     var id = UUID()
     var name = ""
-    var count = 0
+    @State var count = 0
     var refills = 0
     @State var isOn = false
     

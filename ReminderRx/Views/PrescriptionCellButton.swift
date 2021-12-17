@@ -8,43 +8,35 @@
 import SwiftUI
 
 struct PrescriptionCellButton: View {
-    var name: String
-    var count: Int64
-    var refill: Int64
-    @State var isOn: Bool
+    @ObservedObject var prescription: Prescriptions
     
     var body: some View {
-        Button {
-            isOn = true
-//            self.count -= 1
-        } label: {
             HStack {
                 VStack {
                     Text("Count")
-                    Text("\(count)")
+                    Text("\(prescription.count)")
                 }
                 .frame(height: 100)
                 .font(.title.weight(.thin))
                 VStack(alignment: .leading, spacing: 20) {
                     HStack {
                         Image(systemName: "pills.circle")
-                        Text("Name:\(name)")
+                        Text("Name:\(prescription.name ?? "")")
                     }
                     
                     HStack {
                         Image(systemName: "arrow.clockwise.circle")
-                        Text("Refill: \(refill)")
+                        Text("Refill: \(prescription.refills)")
                     }
                 }
                 Spacer()
-                isOn ? Image(systemName: "checkmark.circle.fill").font(.title2).foregroundColor(.green) : Image(systemName: "circle").font(.title2).foregroundColor(.green)
-            }
+                prescription.isOn ? Image(systemName: "checkmark.circle.fill").font(.title2).foregroundColor(.green) : Image(systemName: "circle").font(.title2).foregroundColor(.green)
         }
     }
 }
 
 struct PrescriptionCellButton_Previews: PreviewProvider {
     static var previews: some View {
-        PrescriptionCellButton(name: "Drug 1", count: 2, refill: 2, isOn: true)
+        PrescriptionCellButton(prescription: Prescriptions())
     }
 }
