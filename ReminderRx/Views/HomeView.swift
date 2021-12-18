@@ -18,25 +18,31 @@ struct HomeView: View {
         NavigationView {
             ZStack {
                 List {
-                    ForEach(prescriptions) { prescription in
-                        Button {
-                            updatePrescription(prescription)
-                        } label: {
-                            PrescriptionCellButton(prescription: prescription)
+                    if !prescriptions.isEmpty {
+                        ForEach(prescriptions) { prescription in
+                            Button {
+                                updatePrescription(prescription)
+                            } label: {
+                                PrescriptionCellButton(prescription: prescription)
+                            }
                         }
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                moc.delete(prescriptions[index])
+                            }
+                            do {
+                                try moc.save()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+
+                    } else {
+                        Text("Add a prescription")
                     }
-                    .onDelete { indexSet in
-                        for index in indexSet {
-                            moc.delete(prescriptions[index])
-                        }
-                        do {
-                            try moc.save()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    }
-                    .navigationTitle("Reminder RX")
-                }.listStyle(PlainListStyle())
+                    
+                }.navigationTitle("Reminder RX")
+                .listStyle(PlainListStyle())
                 HStack {
                     Spacer()
                     VStack {
@@ -66,7 +72,7 @@ struct HomeView: View {
             if newPhase == .inactive {
                 print("Inactive")
             } else if newPhase == .active {
-                stateModel.checkIfItsANewDay()
+                updatePrescriptionOnLoad(prescriptions)
             } else if newPhase == .background {
                 print("Background")
             }
@@ -77,33 +83,34 @@ struct HomeView: View {
     }
     
     func updatePrescription(_ prescription: Prescriptions) {
-        let newCount: Int64 = prescription.count - 1
-        let wasTapped = true
+        var newCount = Int64()
+        var wasTapped = false
         
-        moc.performAndWait {
-            prescription.count = newCount
-            prescription.isOn = wasTapped
-            try? moc.save()
+        if !stateModel.theDayHasChanged() && !prescription.isOn {
+            newCount = prescription.count - 1
+            wasTapped = true
+            moc.performAndWait {
+                prescription.count = newCount
+                prescription.isOn = wasTapped
+                try? moc.save()
+            }
+        }
+    }
+    
+    func updatePrescriptionOnLoad(_ prescriptions: FetchedResults<Prescriptions>) {
+        if stateModel.theDayHasChanged() {
+            for prescription in prescriptions {
+                moc.performAndWait {
+                    prescription.isOn = false
+                    try? moc.save()
+                }
+            }
         }
     }
 }
 
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-    }
-}
-
-class Prescription: Identifiable {
-    var id = UUID()
-    var name = ""
-    @State var count = 0
-    var refills = 0
-    @State var isOn = false
-    
-    init(name: String, count: Int) {
-        self.name = name
-        self.count = count
     }
 }
