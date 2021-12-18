@@ -19,32 +19,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "789BFAB8-92B7-405D-95AB-5085A750303D"
+            uuid = "7030CDD8-04FB-4D4D-98C3-9E04A8408742"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ReminderRx/Views/HomeView.swift"
+            filePath = "ReminderRx/Views/HomeView/HomeViewStateModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "updatePrescriptionOnLoad(_:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "theDayHasChanged()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2A31EA76-03B7-4220-B1D4-161A254E2829"
+            uuid = "0DE0F4D1-C285-475A-B4CC-1B4F87252519"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ReminderRx/Views/HomeView.swift"
+            filePath = "ReminderRx/Views/HomeView/HomeViewStateModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "updatePrescription(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "373A0189-7BBA-44CA-9173-583C43AF3863"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReminderRx/Views/HomeView/HomeViewStateModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "updatePrescriptionOnLoad(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

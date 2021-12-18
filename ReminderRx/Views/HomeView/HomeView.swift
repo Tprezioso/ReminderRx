@@ -17,11 +17,11 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                List {
-                    if !prescriptions.isEmpty {
+                if !prescriptions.isEmpty {
+                    List {
                         ForEach(prescriptions) { prescription in
                             Button {
-                                updatePrescription(prescription)
+                                stateModel.updatePrescription(prescription)
                             } label: {
                                 PrescriptionCellButton(prescription: prescription)
                             }
@@ -36,13 +36,13 @@ struct HomeView: View {
                                 print(error.localizedDescription)
                             }
                         }
-
-                    } else {
-                        Text("Add a prescription")
-                    }
-                    
-                }.navigationTitle("Reminder RX")
-                .listStyle(PlainListStyle())
+                        
+                    }.navigationTitle("Reminder RX")
+                        .listStyle(PlainListStyle())
+                } else {
+                    Text("Add a Prescription")
+                        .navigationTitle("Reminder RX")
+                }
                 HStack {
                     Spacer()
                     VStack {
@@ -70,41 +70,25 @@ struct HomeView: View {
             }
         }.onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {
+                do {
+                    try moc.save()
+                } catch {
+                    print("Failed saving")
+                }
                 print("Inactive")
             } else if newPhase == .active {
-                updatePrescriptionOnLoad(prescriptions)
+                stateModel.updatePrescriptionOnLoad(prescriptions)
             } else if newPhase == .background {
                 print("Background")
+                do {
+                    try moc.save()
+                } catch {
+                    print("Failed saving")
+                }
             }
         }
         .onAppear {
             print(prescriptions)
-        }
-    }
-    
-    func updatePrescription(_ prescription: Prescriptions) {
-        var newCount = Int64()
-        var wasTapped = false
-        
-        if !stateModel.theDayHasChanged() && !prescription.isOn {
-            newCount = prescription.count - 1
-            wasTapped = true
-            moc.performAndWait {
-                prescription.count = newCount
-                prescription.isOn = wasTapped
-                try? moc.save()
-            }
-        }
-    }
-    
-    func updatePrescriptionOnLoad(_ prescriptions: FetchedResults<Prescriptions>) {
-        if stateModel.theDayHasChanged() {
-            for prescription in prescriptions {
-                moc.performAndWait {
-                    prescription.isOn = false
-                    try? moc.save()
-                }
-            }
         }
     }
 }
