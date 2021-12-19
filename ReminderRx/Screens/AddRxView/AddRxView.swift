@@ -8,34 +8,27 @@
 import SwiftUI
 
 struct AddRxView: View {
-    @State var name = ""
-    @State var count = ""
-    @State var refills = ""
+    @StateObject var stateModel = AddRxStateModel()
     @Binding var isShowingDetail: Bool
     @Environment(\.managedObjectContext) var moc
-    
+
     var body: some View {
         ZStack {
             NavigationView {
                 VStack {
                     List {
                         Section(header: Text("New Rx")) {
-                            TextField("Rx Name", text: $name)
-                            TextField("Number of Pills", text: $count)
+                            TextField("Rx Name", text: $stateModel.name)
+                            TextField("Number of Pills", text: $stateModel.count)
                                 .keyboardType(.numberPad)
-                            TextField("Refills", text: $refills)
+                            TextField("Refills", text: $stateModel.refills)
                                 .keyboardType(.numberPad)
                         }.navigationTitle("Add Prescription")
                     }.listStyle(PlainListStyle())
                     Spacer()
                     Button {
-                        print("Save pill")
                         let savedPrescription = Prescriptions(context: moc)
-                        savedPrescription.id = UUID()
-                        savedPrescription.name = name
-                        savedPrescription.count = Int64(count) ?? 0
-                        savedPrescription.refills = Int64(refills) ?? 0
-                        savedPrescription.isOn = false
+                        stateModel.savePrescription(savedPrescription)
                         try? moc.save()
                         isShowingDetail = false
                     } label: {
@@ -66,15 +59,16 @@ struct AddRxView_Previews: PreviewProvider {
     }
 }
 
-struct SaveButtonView: View {
-    var body: some View {
-        Text("Save")
-            .font(.title3)
-            .fontWeight(.semibold)
-            .frame(width: 300, height: 50)
-            .foregroundColor(.white)
-            .background(Color.green)
-            .cornerRadius(10)
-            .padding(.bottom)
+class AddRxStateModel: ObservableObject {
+    @Published var name = ""
+    @Published var count = ""
+    @Published var refills = ""
+    
+    func savePrescription(_ prescription: Prescriptions) {
+        prescription.id = UUID()
+        prescription.name = name
+        prescription.count = Int64(count) ?? 0
+        prescription.refills = Int64(refills) ?? 0
+        prescription.isOn = false
     }
 }

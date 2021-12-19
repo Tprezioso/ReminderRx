@@ -8,7 +8,7 @@
 import SwiftUI
 
 class HomeViewStateModel: ObservableObject {
-    @Published private var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
+    @Published var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
     @Published var lastDate = Date()
     @Published var currentDate = Date()
     @Published var currentDateString = String()
@@ -22,11 +22,15 @@ class HomeViewStateModel: ObservableObject {
         if lastDateString == String() {
             lastDateString = formatter.string(from: lastDate)
             UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
+            UserDefaults.standard.synchronize()
         }
         self.currentDate = Date()
         currentDateString = formatter.string(from: currentDate)
 
         if lastDateString != currentDateString {
+            UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
+            UserDefaults.standard.synchronize()
+
             return true
         } else {
             return false
@@ -37,7 +41,7 @@ class HomeViewStateModel: ObservableObject {
         var newCount = Int64()
         var wasTapped = false
         
-        if theDayHasChanged() && !prescription.isOn {
+        if !theDayHasChanged() && !prescription.isOn {
             newCount = prescription.count - 1
             wasTapped = true
             moc.performAndWait {
@@ -49,7 +53,7 @@ class HomeViewStateModel: ObservableObject {
     }
 
     func updatePrescriptionOnLoad(_ prescriptions: FetchedResults<Prescriptions>) {
-        if !theDayHasChanged() {
+        if theDayHasChanged() {
             for prescription in prescriptions {
                 moc.performAndWait {
                     prescription.isOn = false

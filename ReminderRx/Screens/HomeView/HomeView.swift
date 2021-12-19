@@ -25,22 +25,33 @@ struct HomeView: View {
                             } label: {
                                 PrescriptionCellButton(prescription: prescription)
                             }
-                        }
-                        .onDelete { indexSet in
-                            for index in indexSet {
-                                moc.delete(prescriptions[index])
+                            .swipeActions {
+                                Button {
+                                    print("Delete")
+                                    moc.delete(prescription)
+                                    do {
+                                        try moc.save()
+                                    } catch {
+                                        print(error.localizedDescription)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                .tint(.red)
+                                Button {
+                                    print("Edit")
+                                } label: {
+                                    Label("Edit", systemImage: "square.and.pencil")
+                                }
+                                .tint(.yellow)
+                                
+                                
                             }
-                            do {
-                                try moc.save()
-                            } catch {
-                                print(error.localizedDescription)
-                            }
                         }
-                        
                     }.navigationTitle("Reminder RX")
                         .listStyle(PlainListStyle())
                 } else {
-                    Text("Add a Prescription")
+                    EmptyStateView(message: "Add a Prescription")
                         .navigationTitle("Reminder RX")
                 }
                 HStack {
@@ -50,19 +61,9 @@ struct HomeView: View {
                         Button {
                             stateModel.plusButtonTapped.toggle()
                         } label: {
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(.white)
-                                    .frame(width: 70, height: 70)
-                                Image(systemName: "plus.circle.fill")
-                                    .resizable()
-                                    .frame(width: 75, height: 75)
-                                    .foregroundColor(.blue)
-                                    .padding()
-                            }
-                            
+                            AddButtonView()
                         }
-                        .sheet(isPresented: $stateModel.plusButtonTapped){
+                        .sheet(isPresented: $stateModel.plusButtonTapped) {
                             AddRxView(isShowingDetail: $stateModel.plusButtonTapped)
                         }
                     }
@@ -86,9 +87,6 @@ struct HomeView: View {
                     print("Failed saving")
                 }
             }
-        }
-        .onAppear {
-            print(prescriptions)
         }
     }
 }

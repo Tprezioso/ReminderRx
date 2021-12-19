@@ -21,7 +21,7 @@ struct PrescriptionCellButton: View {
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Image(systemName: "pills.circle")
-                    Text("Name:\(prescription.name ?? "")")
+                    Text("Name: \(prescription.name ?? "")")
                 }
                 
                 HStack {
