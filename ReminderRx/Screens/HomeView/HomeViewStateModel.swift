@@ -41,7 +41,7 @@ class HomeViewStateModel: ObservableObject {
         var newCount = Int64()
         var wasTapped = false
         
-        if !theDayHasChanged() && !prescription.isOn {
+        if !prescription.isOn {
             newCount = prescription.count - 1
             wasTapped = true
             moc.performAndWait {
