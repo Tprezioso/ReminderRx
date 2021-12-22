@@ -28,7 +28,7 @@ class HomeViewStateModel: ObservableObject {
         currentDateString = formatter.string(from: currentDate)
 
         if lastDateString != currentDateString {
-            UserDefaults.standard.set(self.currentDateString, forKey: "lastDateString")
+            UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
             UserDefaults.standard.synchronize()
 
             return true
