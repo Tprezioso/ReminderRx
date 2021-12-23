@@ -12,29 +12,38 @@ class HomeViewStateModel: ObservableObject {
     @Published var lastDate = Date()
     @Published var currentDate = Date()
     @Published var currentDateString = String()
+    @Published var oldDate = UserDefaults.standard.object(forKey: "oldDate") as? Date
     @Published var isANewDay = false
     @Published var plusButtonTapped = false
     @Environment(\.managedObjectContext) var moc
 
     func theDayHasChanged() -> Bool {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MM y"
-        if lastDateString == String() {
-            lastDateString = formatter.string(from: lastDate)
-            UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
-            UserDefaults.standard.synchronize()
-        }
-        self.currentDate = Date()
-        currentDateString = formatter.string(from: currentDate)
-
-        if lastDateString != currentDateString {
-            UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
-            UserDefaults.standard.synchronize()
-
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "d MM y"
+//        if lastDateString == String() {
+//            lastDateString = formatter.string(from: lastDate)
+//            UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
+//            UserDefaults.standard.synchronize()
+//        } else {
+//            self.lastDateString = UserDefaults.standard.string(forKey: "lastDateString")!
+//        }
+//        self.currentDate = Date()
+//        currentDateString = formatter.string(from: currentDate)
+//
+//        if self.lastDateString != currentDateString {
+//            UserDefaults.standard.set(lastDateString, forKey: "lastDateString")
+//            UserDefaults.standard.synchronize()
+//            print(UserDefaults.standard.string(forKey: "lastDateString"))
+//
+//            return true
+//        } else {
+//            return false
+//        }
+        if !Calendar.current.isDateInToday(oldDate ?? Date()) {
+            UserDefaults.standard.set(Date(), forKey: "oldDate")
             return true
-        } else {
-            return false
         }
+        return false
     }
     
     func updatePrescription(_ prescription: Prescriptions) {
