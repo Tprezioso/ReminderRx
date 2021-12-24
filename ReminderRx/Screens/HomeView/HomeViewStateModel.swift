@@ -12,7 +12,7 @@ class HomeViewStateModel: ObservableObject {
     @Published var lastDate = Date()
     @Published var currentDate = Date()
     @Published var currentDateString = String()
-    @Published var oldDate = UserDefaults.standard.object(forKey: "oldDate") as? Date
+    @Published var oldDate = UserDefaults.standard.object(forKey: "oldDate") ?? Date()
     @Published var isANewDay = false
     @Published var plusButtonTapped = false
     @Environment(\.managedObjectContext) var moc
@@ -39,7 +39,7 @@ class HomeViewStateModel: ObservableObject {
 //        } else {
 //            return false
 //        }
-        if !Calendar.current.isDateInToday(oldDate ?? Date()) {
+        if !Calendar.current.isDateInToday(oldDate as! Date) {
             UserDefaults.standard.set(Date(), forKey: "oldDate")
             return true
         }
