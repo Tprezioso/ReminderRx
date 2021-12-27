@@ -34,17 +34,11 @@ class HomeViewStateModel: ObservableObject {
         if self.lastDateString != currentDateString {
             UserDefaults.standard.set(currentDateString, forKey: "lastDateString")
             UserDefaults.standard.synchronize()
-            print(UserDefaults.standard.string(forKey: "lastDateString"))
 
             return true
         } else {
             return false
         }
-//        if !Calendar.current.isDateInToday(oldDate as! Date) {
-//            UserDefaults.standard.set(Date(), forKey: "oldDate")
-//            return true
-//        }
-//        return false
     }
     
     func updatePrescription(_ prescription: Prescriptions) {
