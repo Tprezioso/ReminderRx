@@ -9,13 +9,11 @@ import SwiftUI
 
 class HomeViewStateModel: ObservableObject {
     @Published var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
-    @Published var lastDate = Date()
-    @Published var currentDate = Date()
-    @Published var currentDateString = String()
-    @Published var oldDate = UserDefaults.standard.object(forKey: "oldDate") ?? Date()
-    @Published var isANewDay = false
     @Published var plusButtonTapped = false
     @Environment(\.managedObjectContext) var moc
+    private var lastDate = Date()
+    private var currentDate = Date()
+    private var currentDateString = String()
 
     func theDayHasChanged() -> Bool {
         let formatter = DateFormatter()
