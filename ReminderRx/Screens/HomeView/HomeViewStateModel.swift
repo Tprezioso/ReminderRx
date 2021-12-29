@@ -11,14 +11,12 @@ class HomeViewStateModel: ObservableObject {
     @Published var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
     @Published var plusButtonTapped = false
     @Environment(\.managedObjectContext) var moc
-    private var lastDate = Date()
-    private var currentDate = Date()
-    private var currentDateString = String()
 
     func theDayHasChanged() -> Bool {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MM y"
         if lastDateString == String() {
+            let lastDate = Date()
             lastDateString = formatter.string(from: lastDate)
             UserDefaults.standard.set(self.lastDateString, forKey: "lastDateString")
             UserDefaults.standard.synchronize()
@@ -26,13 +24,12 @@ class HomeViewStateModel: ObservableObject {
             self.lastDateString = UserDefaults.standard.string(forKey: "lastDateString")!
         }
         
-        self.currentDate = Date()
-        self.currentDateString = formatter.string(from: self.currentDate)
+        let currentDate = Date()
+        let currentDateString = formatter.string(from: currentDate)
 
         if self.lastDateString != currentDateString {
             UserDefaults.standard.set(currentDateString, forKey: "lastDateString")
             UserDefaults.standard.synchronize()
-
             return true
         } else {
             return false

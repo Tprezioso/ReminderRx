@@ -44,12 +44,11 @@ struct HomeView: View {
                                     Label("Edit", systemImage: "square.and.pencil")
                                 }
                                 .tint(.yellow)
-                                
-                                
                             }
                         }
-                    }.navigationTitle("Reminder RX")
-                        .listStyle(PlainListStyle())
+                    }
+                    .navigationTitle("Reminder RX")
+                    .listStyle(.plain)
                 } else {
                     EmptyStateView(message: "Add a Prescription")
                         .navigationTitle("Reminder RX")
