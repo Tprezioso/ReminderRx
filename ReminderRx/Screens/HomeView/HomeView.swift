@@ -39,13 +39,16 @@ struct HomeView: View {
                                 }
                                 .tint(.red)
                                 Button {
-                                    print("Edit")
+                                    stateModel.editButtonTapped.toggle()
                                 } label: {
                                     Label("Edit", systemImage: "square.and.pencil")
                                 }
                                 .tint(.yellow)
                             }
                         }
+                    }
+                    .sheet(isPresented: $stateModel.editButtonTapped) {
+                        EditRxView(isShowingDetail: $stateModel.editButtonTapped)
                     }
                     .navigationTitle("Reminder RX")
                     .listStyle(.plain)

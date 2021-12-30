@@ -16,6 +16,7 @@
 		551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573F2274339D30048F779 /* HomeViewStateModel.swift */; };
 		55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F59276EA5ED00E70D0B /* SaveButtonView.swift */; };
 		55329F5D276ED51200E70D0B /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F5C276ED51200E70D0B /* EmptyStateView.swift */; };
+		55329F5F277E6C1700E70D0B /* EditRxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F5E277E6C1700E70D0B /* EditRxView.swift */; };
 		5535BDFB27494866008729F8 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFA27494866008729F8 /* PersistenceController.swift */; };
 		5535BE002749A673008729F8 /* AddRxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFF2749A673008729F8 /* AddRxView.swift */; };
 		5535BE022749B682008729F8 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BE012749B682008729F8 /* XDismissButton.swift */; };
@@ -33,6 +34,7 @@
 		551573F2274339D30048F779 /* HomeViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStateModel.swift; sourceTree = "<group>"; };
 		55329F59276EA5ED00E70D0B /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
 		55329F5C276ED51200E70D0B /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		55329F5E277E6C1700E70D0B /* EditRxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRxView.swift; sourceTree = "<group>"; };
 		5535BDFA27494866008729F8 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		5535BDFF2749A673008729F8 /* AddRxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRxView.swift; sourceTree = "<group>"; };
 		5535BE012749B682008729F8 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				5514AE03276D970A0045405F /* HomeView */,
+				55329F5E277E6C1700E70D0B /* EditRxView.swift */,
 				5514AE04276D972A0045405F /* AddRxView */,
 			);
 			path = Screens;
@@ -218,6 +221,7 @@
 				55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */,
 				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
 				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
+				55329F5F277E6C1700E70D0B /* EditRxView.swift in Sources */,
 				5503A8F4276EA18300EC1766 /* AddButtonView.swift.swift in Sources */,
 				551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,

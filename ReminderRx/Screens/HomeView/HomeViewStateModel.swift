@@ -10,6 +10,7 @@ import SwiftUI
 class HomeViewStateModel: ObservableObject {
     @Published var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
     @Published var plusButtonTapped = false
+    @Published var editButtonTapped = false
     @Environment(\.managedObjectContext) var moc
 
     func theDayHasChanged() -> Bool {
