@@ -45,10 +45,10 @@ struct HomeView: View {
                                 }
                                 .tint(.yellow)
                             }
+                            .sheet(isPresented: $stateModel.editButtonTapped) {
+                                EditRxView(isShowingDetail: $stateModel.editButtonTapped)
+                            }
                         }
-                    }
-                    .sheet(isPresented: $stateModel.editButtonTapped) {
-                        EditRxView(isShowingDetail: $stateModel.editButtonTapped)
                     }
                     .navigationTitle("Reminder RX")
                     .listStyle(.plain)
