@@ -38,6 +38,7 @@ struct HomeView: View {
                                     Label("Delete", systemImage: "trash")
                                 }
                                 .tint(.red)
+                                
                                 Button {
                                     stateModel.editButtonTapped.toggle()
                                 } label: {

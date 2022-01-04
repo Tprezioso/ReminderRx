@@ -131,10 +131,18 @@
 			isa = PBXGroup;
 			children = (
 				5514AE03276D970A0045405F /* HomeView */,
-				55329F5E277E6C1700E70D0B /* EditRxView.swift */,
+				55329F6027839D7500E70D0B /* EditRxView */,
 				5514AE04276D972A0045405F /* AddRxView */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		55329F6027839D7500E70D0B /* EditRxView */ = {
+			isa = PBXGroup;
+			children = (
+				55329F5E277E6C1700E70D0B /* EditRxView.swift */,
+			);
+			path = EditRxView;
 			sourceTree = "<group>";
 		};
 		5535BDFC27494895008729F8 /* Managers */ = {
