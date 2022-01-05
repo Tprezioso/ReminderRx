@@ -47,7 +47,7 @@ struct HomeView: View {
                                 .tint(.yellow)
                             }
                             .sheet(isPresented: $stateModel.editButtonTapped) {
-                                EditRxView(isShowingDetail: $stateModel.editButtonTapped)
+                                EditRxView(isShowingDetail: $stateModel.editButtonTapped, prescription: prescription)
                             }
                         }
                     }

@@ -12,13 +12,14 @@ struct EditRxView: View {
     @State var count = ""
     @State var refills = ""
     @Binding var isShowingDetail: Bool
+    @ObservedObject var prescription: Prescriptions
     
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     Section(header: Text("Edit")) {
-                        TextField("Rx Name", text: $name)
+                        TextField("Rx Name", text: Binding($prescription.name, ""))
                         TextField("Number of Pills", text: $count)
                             .keyboardType(.numberPad)
                         TextField("Refills", text: $refills)
@@ -38,6 +39,17 @@ struct EditRxView: View {
 
 struct EditRxView_Previews: PreviewProvider {
     static var previews: some View {
-        EditRxView(isShowingDetail: .constant(true))
+        EditRxView(isShowingDetail: .constant(true), prescription: Prescriptions())
+    }
+}
+
+extension Binding {
+    init(_ source: Binding<Value?>, _ defaultValue: Value) {
+        // Ensure a non-nil value in `source`.
+        if source.wrappedValue == nil {
+            source.wrappedValue = defaultValue
+        }
+        // Unsafe unwrap because *we* know it's non-nil now.
+        self.init(source)!
     }
 }
