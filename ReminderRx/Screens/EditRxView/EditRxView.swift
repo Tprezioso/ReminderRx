@@ -20,9 +20,9 @@ struct EditRxView: View {
                 List {
                     Section(header: Text("Edit")) {
                         TextField("Rx Name", text: Binding($prescription.name, ""))
-                        TextField("Number of Pills", text: $count)
+                        TextField("Number of Pills", value: $prescription.count, formatter: NumberFormatter())
                             .keyboardType(.numberPad)
-                        TextField("Refills", text: $refills)
+                        TextField("Refills", value: $prescription.refills, formatter: NumberFormatter())
                             .keyboardType(.numberPad)
                     }.navigationTitle("Edit Prescription")
                 }.listStyle(PlainListStyle())
