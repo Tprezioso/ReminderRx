@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct EditRxView: View {
-    @State var name = ""
-    @State var count = ""
-    @State var refills = ""
     @Binding var isShowingDetail: Bool
     @ObservedObject var prescription: Prescriptions
+    @Environment(\.managedObjectContext) var moc
     
     var body: some View {
         NavigationView {
