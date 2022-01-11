@@ -22,6 +22,7 @@ struct EditRxView: View {
                             .keyboardType(.numberPad)
                         TextField("Refills", value: $prescription.refills, formatter: NumberFormatter())
                             .keyboardType(.numberPad)
+                        Toggle("Marked as Checked", isOn: $prescription.isOn)
                     }.navigationTitle("Edit Prescription")
                 }.listStyle(PlainListStyle())
                 Spacer()
