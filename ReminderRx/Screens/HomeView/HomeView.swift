@@ -38,7 +38,7 @@ struct HomeView: View {
                                     Label("Delete", systemImage: "trash")
                                 }
                                 .tint(.red)
-                                
+
                                 Button {
                                     stateModel.editButtonTapped.toggle()
                                 } label: {
@@ -71,6 +71,8 @@ struct HomeView: View {
                         }
                     }
                 }
+            }.onAppear {
+                
             }
         }.onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {
