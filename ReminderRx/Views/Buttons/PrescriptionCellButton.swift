@@ -14,7 +14,7 @@ struct PrescriptionCellButton: View {
         HStack {
             VStack {
                 Text("Count")
-                Text("\(prescription.count)")
+                Text(prescription.count ?? "")
             }
             .frame(height: 100)
             .font(.title.weight(.thin))
@@ -26,7 +26,7 @@ struct PrescriptionCellButton: View {
                 
                 HStack {
                     Image(systemName: "arrow.clockwise.circle")
-                    Text("Refill: \(prescription.refills)")
+                    Text("Refill: \(prescription.refills ?? "")")
                 }
             }
             Spacer()

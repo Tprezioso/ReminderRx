@@ -13,24 +13,38 @@ struct EditRxView: View {
     @Environment(\.managedObjectContext) var moc
     
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    Section(header: Text("Edit")) {
-                        TextField("Rx Name", text: Binding($prescription.name, ""))
-                        TextField("Number of Pills", value: $prescription.count, formatter: NumberFormatter())
-                            .keyboardType(.numberPad)
-                        TextField("Refills", value: $prescription.refills, formatter: NumberFormatter())
-                            .keyboardType(.numberPad)
-                        Toggle("Marked as Checked", isOn: $prescription.isOn)
-                    }.navigationTitle("Edit Prescription")
-                }.listStyle(PlainListStyle())
-                Spacer()
-                Button {
-                    isShowingDetail = false
-                } label: {
-                    SaveButtonView()
+        ZStack {
+            NavigationView {
+                VStack {
+                    List {
+                        Section(header: Text("Edit")) {
+                            TextField("Rx Name", text: Binding($prescription.name, ""))
+                            TextField("Number of Pills", text: Binding($prescription.count, ""))
+                                .keyboardType(.numberPad)
+                            TextField("Refills", text: Binding($prescription.refills, ""))
+                                .keyboardType(.numberPad)
+                            Toggle("Marked as Checked", isOn: $prescription.isOn)
+                        }.navigationTitle("Edit Prescription")
+                    }.listStyle(PlainListStyle())
+                    Spacer()
+                    Button {
+                        isShowingDetail = false
+                        try? moc.save()
+                    } label: {
+                        SaveButtonView()
+                    }
                 }
+            }
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        isShowingDetail = false
+                    } label: {
+                        XDismissButton()
+                    }
+                }
+                Spacer()
             }
         }
     }

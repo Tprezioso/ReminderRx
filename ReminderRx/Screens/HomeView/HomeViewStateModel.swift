@@ -38,14 +38,15 @@ class HomeViewStateModel: ObservableObject {
     }
     
     func updatePrescription(_ prescription: Prescriptions) {
-        var newCount = Int64()
+        var newCount = Int()
         var wasTapped = false
+        let count = Int(prescription.count ?? "0") ?? 0
         
         if !prescription.isOn {
-            newCount = prescription.count - 1
+            newCount = count - 1
             wasTapped = true
             moc.performAndWait {
-                prescription.count = newCount
+                prescription.count = String(newCount)
                 prescription.isOn = wasTapped
                 try? moc.save()
             }

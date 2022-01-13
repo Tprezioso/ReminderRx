@@ -67,8 +67,8 @@ class AddRxStateModel: ObservableObject {
     func savePrescription(_ prescription: Prescriptions) {
         prescription.id = UUID()
         prescription.name = name
-        prescription.count = Int64(count) ?? 0
-        prescription.refills = Int64(refills) ?? 0
+        prescription.count = count
+        prescription.refills = refills
         prescription.isOn = false
     }
 }

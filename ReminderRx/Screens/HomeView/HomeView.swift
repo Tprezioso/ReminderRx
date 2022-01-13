@@ -17,46 +17,44 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                if !prescriptions.isEmpty {
-                    List {
-                        ForEach(prescriptions) { prescription in
+                if prescriptions.isEmpty {
+                    EmptyStateView(message: "Add a Prescription")
+                }
+                List {
+                    ForEach(prescriptions) { prescription in
+                        Button {
+                            stateModel.updatePrescription(prescription)
+                        } label: {
+                            PrescriptionCellButton(prescription: prescription)
+                        }
+                        .swipeActions {
                             Button {
-                                stateModel.updatePrescription(prescription)
+                                print("Delete")
+                                moc.delete(prescription)
+                                do {
+                                    try moc.save()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
                             } label: {
-                                PrescriptionCellButton(prescription: prescription)
+                                Label("Delete", systemImage: "trash")
                             }
-                            .swipeActions {
-                                Button {
-                                    print("Delete")
-                                    moc.delete(prescription)
-                                    do {
-                                        try moc.save()
-                                    } catch {
-                                        print(error.localizedDescription)
-                                    }
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                                .tint(.red)
-
-                                Button {
-                                    stateModel.editButtonTapped.toggle()
-                                } label: {
-                                    Label("Edit", systemImage: "square.and.pencil")
-                                }
-                                .tint(.yellow)
+                            .tint(.red)
+                            
+                            Button {
+                                stateModel.editButtonTapped.toggle()
+                            } label: {
+                                Label("Edit", systemImage: "square.and.pencil")
                             }
-                            .sheet(isPresented: $stateModel.editButtonTapped) {
-                                EditRxView(isShowingDetail: $stateModel.editButtonTapped, prescription: prescription)
-                            }
+                            .tint(.yellow)
+                        }
+                        .sheet(isPresented: $stateModel.editButtonTapped) {
+                            EditRxView(isShowingDetail: $stateModel.editButtonTapped, prescription: prescription)
                         }
                     }
-                    .navigationTitle("Reminder RX")
-                    .listStyle(.plain)
-                } else {
-                    EmptyStateView(message: "Add a Prescription")
-                        .navigationTitle("Reminder RX")
                 }
+                .navigationTitle("Reminder RX")
+                .listStyle(.plain)
                 HStack {
                     Spacer()
                     VStack {
