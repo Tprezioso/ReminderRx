@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct EditRxView: View {
     @Binding var isShowingDetail: Bool
@@ -24,6 +25,11 @@ struct EditRxView: View {
                             TextField("Refills", text: Binding($prescription.refills, ""))
                                 .keyboardType(.numberPad)
                             Toggle("Marked as Checked", isOn: $prescription.isOn)
+                            Button {
+                                
+                            } label: {
+                                Text("Edit Reminder")
+                            }
                         }.navigationTitle("Edit Prescription")
                     }.listStyle(PlainListStyle())
                     Spacer()
