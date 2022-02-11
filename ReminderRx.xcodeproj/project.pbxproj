@@ -21,6 +21,7 @@
 		5535BE002749A673008729F8 /* AddRxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFF2749A673008729F8 /* AddRxView.swift */; };
 		5535BE022749B682008729F8 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BE012749B682008729F8 /* XDismissButton.swift */; };
 		5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */; };
+		555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555ABFE027B7259800DBB3B3 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		5535BDFF2749A673008729F8 /* AddRxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRxView.swift; sourceTree = "<group>"; };
 		5535BE012749B682008729F8 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Prescriptions.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
+		555ABFE027B7259800DBB3B3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				5535BDFA27494866008729F8 /* PersistenceController.swift */,
+				555ABFE027B7259800DBB3B3 /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */,
 				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
 				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
+				555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */,
 				55329F5F277E6C1700E70D0B /* EditRxView.swift in Sources */,
 				5503A8F4276EA18300EC1766 /* AddButtonView.swift.swift in Sources */,
 				551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */,

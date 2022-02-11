@@ -12,6 +12,7 @@ struct EditRxView: View {
     @Binding var isShowingDetail: Bool
     @ObservedObject var prescription: Prescriptions
     @Environment(\.managedObjectContext) var moc
+    @StateObject var notificationManager = NotificationManager()
     
     var body: some View {
         ZStack {
@@ -28,7 +29,7 @@ struct EditRxView: View {
                             Button {
                                 
                             } label: {
-                                Text("Edit Reminder")
+                                Text("Set Notification Reminder")
                             }
                         }.navigationTitle("Edit Prescription")
                     }.listStyle(PlainListStyle())
@@ -51,6 +52,20 @@ struct EditRxView: View {
                     }
                 }
                 Spacer()
+            }
+        }
+        .onAppear {
+            notificationManager.reloadAuthorizationStatus()
+        }
+        .onChange(of: notificationManager.authorizationStatus) { authorizationStatus in
+            switch authorizationStatus {
+            case .notDetermined:
+                notificationManager.requestAuthorization()
+            case .authorized:
+                notificationManager.reloadLocalNotifications()
+                break
+            default:
+                break
             }
         }
     }

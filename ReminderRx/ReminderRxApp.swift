@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 @main
 struct ReminderRxApp: App {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import EventKit
 
 struct HomeView: View {    
     @StateObject var stateModel = HomeViewStateModel()
