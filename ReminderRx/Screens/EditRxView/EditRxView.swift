@@ -9,6 +9,7 @@ import SwiftUI
 import EventKit
 
 struct EditRxView: View {
+    @State var date = Date()
     @Binding var isShowingDetail: Bool
     @ObservedObject var prescription: Prescriptions
     @Environment(\.managedObjectContext) var moc
@@ -26,12 +27,20 @@ struct EditRxView: View {
                             TextField("Refills", text: Binding($prescription.refills, ""))
                                 .keyboardType(.numberPad)
                             Toggle("Marked as Checked", isOn: $prescription.isOn)
-                            Button {
-                                
-                            } label: {
-                                Text("Set Notification Reminder")
+                        }
+                        Section(header: Text("Set Notification Reminder")) {
+                            HStack {
+                                Text("Date")
+                                Spacer()
+                                DatePicker("", selection: $date, displayedComponents: [.date])
                             }
-                        }.navigationTitle("Edit Prescription")
+                            HStack {
+                                Text("Time")
+                                Spacer()
+                                DatePicker("", selection: $date, displayedComponents: [.hourAndMinute])
+                            }
+                        }
+                        .navigationTitle("Edit Prescription")
                     }.listStyle(PlainListStyle())
                     Spacer()
                     Button {
@@ -63,7 +72,6 @@ struct EditRxView: View {
                 notificationManager.requestAuthorization()
             case .authorized:
                 notificationManager.reloadLocalNotifications()
-                break
             default:
                 break
             }
