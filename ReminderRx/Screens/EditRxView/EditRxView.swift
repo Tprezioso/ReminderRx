@@ -29,11 +29,11 @@ struct EditRxView: View {
                             Toggle("Marked as Checked", isOn: $prescription.isOn)
                         }
                         Section(header: Text("Set Notification Reminder")) {
-                            HStack {
-                                Text("Date")
-                                Spacer()
-                                DatePicker("", selection: $date, displayedComponents: [.date])
-                            }
+//                            HStack {
+//                                Text("Date")
+//                                Spacer()
+//                                DatePicker("", selection: $date, displayedComponents: [.date])
+//                            }
                             HStack {
                                 Text("Time")
                                 Spacer()
@@ -44,8 +44,13 @@ struct EditRxView: View {
                     }.listStyle(PlainListStyle())
                     Spacer()
                     Button {
-                        isShowingDetail = false
+                        Task { @MainActor in
+                            let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+                            guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
+                            await notificationManager.createLocalNotification(title: prescription.name ?? "", hour: hour, minute: minute)
+                        }
                         try? moc.save()
+                        isShowingDetail = false
                     } label: {
                         SaveButtonView()
                     }
@@ -65,6 +70,9 @@ struct EditRxView: View {
         }
         .onAppear {
             notificationManager.reloadAuthorizationStatus()
+        }
+        .onDisappear {
+            notificationManager.reloadLocalNotifications()
         }
         .onChange(of: notificationManager.authorizationStatus) { authorizationStatus in
             switch authorizationStatus {
