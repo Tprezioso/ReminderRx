@@ -11,6 +11,7 @@ import EventKit
 struct EditRxView: View {
     @State var date = Date()
     @Binding var isShowingDetail: Bool
+    @State var hasDailyReminder = false
     @ObservedObject var prescription: Prescriptions
     @Environment(\.managedObjectContext) var moc
     @StateObject var notificationManager = NotificationManager()
@@ -29,15 +30,13 @@ struct EditRxView: View {
                             Toggle("Marked as Checked", isOn: $prescription.isOn)
                         }
                         Section(header: Text("Set Notification Reminder")) {
-//                            HStack {
-//                                Text("Date")
-//                                Spacer()
-//                                DatePicker("", selection: $date, displayedComponents: [.date])
-//                            }
-                            HStack {
-                                Text("Time")
-                                Spacer()
-                                DatePicker("", selection: $date, displayedComponents: [.hourAndMinute])
+                            Toggle("Daily notification reminder", isOn: $hasDailyReminder)
+                            if hasDailyReminder {
+                                HStack {
+                                    Text("Time")
+                                    Spacer()
+                                    DatePicker("", selection: $date, displayedComponents: [.hourAndMinute])
+                                }
                             }
                         }
                         .navigationTitle("Edit Prescription")
