@@ -11,7 +11,7 @@ import EventKit
 struct EditRxView: View {
     @State var date = Date()
     @Binding var isShowingDetail: Bool
-    @State var hasDailyReminder = false
+    @AppStorage("hasDailyReminder") var hasDailyReminder = false
     @ObservedObject var prescription: Prescriptions
     @Environment(\.managedObjectContext) var moc
     @StateObject var notificationManager = NotificationManager()
