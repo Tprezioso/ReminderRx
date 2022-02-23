@@ -54,4 +54,9 @@ final class NotificationManager: ObservableObject {
             print(error)
         }
     }
+    
+    func removeAllNotifications() {
+//            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification])
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
 }

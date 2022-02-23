@@ -31,6 +31,9 @@ struct EditRxView: View {
                         }
                         Section(header: Text("Set Notification Reminder")) {
                             Toggle("Daily notification reminder", isOn: $hasDailyReminder)
+                                .onChange(of: hasDailyReminder) { value in
+                                    if !value { notificationManager.removeAllNotifications() }
+                                }
                             if hasDailyReminder {
                                 HStack {
                                     Text("Time")
