@@ -11,6 +11,8 @@ struct AddRxView: View {
     @StateObject var stateModel = AddRxStateModel()
     @Binding var isShowingDetail: Bool
     @Environment(\.managedObjectContext) var moc
+    @StateObject var notificationManager = NotificationManager()
+    @AppStorage("hasDailyReminder") var hasDailyReminder = false
 
     var body: some View {
         ZStack {
@@ -24,6 +26,19 @@ struct AddRxView: View {
                             TextField("Refills", text: $stateModel.refills)
                                 .keyboardType(.numberPad)
                         }.navigationTitle("Add Prescription")
+                        Section(header: Text("Set Notification Reminder")) {
+                            Toggle("Daily notification reminder", isOn: $hasDailyReminder)
+                                .onChange(of: hasDailyReminder) { value in
+                                    if !value { notificationManager.removeAllNotifications() }
+                                }
+                            if hasDailyReminder {
+                                HStack {
+                                    Text("Time")
+                                    Spacer()
+                                    DatePicker("", selection: $stateModel.date, displayedComponents: [.hourAndMinute])
+                                }
+                            }
+                        }
                     }.listStyle(PlainListStyle())
                     Spacer()
                     Button {
@@ -63,6 +78,7 @@ class AddRxStateModel: ObservableObject {
     @Published var name = ""
     @Published var count = ""
     @Published var refills = ""
+    @Published var date = Date()
     
     func savePrescription(_ prescription: Prescriptions) {
         prescription.id = UUID()
