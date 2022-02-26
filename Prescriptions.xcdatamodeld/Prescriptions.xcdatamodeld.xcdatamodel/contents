@@ -5,10 +5,9 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
-        <attribute name="notificationID" optional="YES" attributeType="String"/>
         <attribute name="refills" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Prescriptions" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Prescriptions" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

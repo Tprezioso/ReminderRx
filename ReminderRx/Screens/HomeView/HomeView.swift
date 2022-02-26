@@ -14,6 +14,7 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: []) var prescriptions: FetchedResults<Prescriptions>
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.managedObjectContext) var moc
+    @StateObject var notificationManager = NotificationManager()
     
     var body: some View {
         NavigationView {
@@ -71,7 +72,20 @@ struct HomeView: View {
                     }
                 }
             }.onAppear {
-                
+                notificationManager.reloadAuthorizationStatus()
+            }
+            .onDisappear {
+                notificationManager.reloadLocalNotifications()
+            }
+            .onChange(of: notificationManager.authorizationStatus) { authorizationStatus in
+                switch authorizationStatus {
+                case .notDetermined:
+                    notificationManager.requestAuthorization()
+                case .authorized:
+                    notificationManager.reloadLocalNotifications()
+                default:
+                    break
+                }
             }
         }.onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {

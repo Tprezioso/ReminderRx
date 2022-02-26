@@ -30,16 +30,21 @@ struct EditRxView: View {
                             Toggle("Marked as Checked", isOn: $prescription.isOn)
                         }
                         Section(header: Text("Set Notification Reminder")) {
-                            Toggle("Daily notification reminder", isOn: $hasDailyReminder)
-                                .onChange(of: hasDailyReminder) { value in
-                                    if !value { notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? UUID().uuidString) }
+                            if notificationManager.authorizationStatus == .denied {
+                                Text("Please go into your setting and enable Notification to use daily notification reminders")
+                            } else {
+                                Toggle("Daily notification reminder", isOn: $hasDailyReminder)
+                                    .onChange(of: hasDailyReminder) { value in
+                                        if !value { notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? UUID().uuidString) }
+                                    }
+                                if hasDailyReminder {
+                                    HStack {
+                                        Text("Time")
+                                        Spacer()
+                                        DatePicker("", selection: $date, displayedComponents: [.hourAndMinute])
+                                    }
                                 }
-                            if hasDailyReminder {
-                                HStack {
-                                    Text("Time")
-                                    Spacer()
-                                    DatePicker("", selection: $date, displayedComponents: [.hourAndMinute])
-                                }
+                                
                             }
                         }
                         .navigationTitle("Edit Prescription")
@@ -72,19 +77,6 @@ struct EditRxView: View {
         }
         .onAppear {
             notificationManager.reloadAuthorizationStatus()
-        }
-        .onDisappear {
-            notificationManager.reloadLocalNotifications()
-        }
-        .onChange(of: notificationManager.authorizationStatus) { authorizationStatus in
-            switch authorizationStatus {
-            case .notDetermined:
-                notificationManager.requestAuthorization()
-            case .authorized:
-                notificationManager.reloadLocalNotifications()
-            default:
-                break
-            }
         }
     }
 }

@@ -27,15 +27,20 @@ struct AddRxView: View {
                                 .keyboardType(.numberPad)
                         }.navigationTitle("Add Prescription")
                         Section(header: Text("Set Notification Reminder")) {
-                            Toggle("Daily notification reminder", isOn: $hasDailyReminder)
-                                .onChange(of: hasDailyReminder) { value in
-                                    if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
-                                }
-                            if hasDailyReminder {
-                                HStack {
-                                    Text("Time")
-                                    Spacer()
-                                    DatePicker("", selection: $stateModel.date, displayedComponents: [.hourAndMinute])
+                            if notificationManager.authorizationStatus == .denied {
+                                Text("Please go into your setting and enable Notification to use daily notification reminders")
+                            } else {
+                                Toggle("Daily notification reminder", isOn: $hasDailyReminder)
+                                    .onChange(of: hasDailyReminder) { value in
+//                                        if value { notificationManager.reloadAuthorizationStatus() }
+                                        if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
+                                    }
+                                if hasDailyReminder {
+                                    HStack {
+                                        Text("Time")
+                                        Spacer()
+                                        DatePicker("", selection: $stateModel.date, displayedComponents: [.hourAndMinute])
+                                    }
                                 }
                             }
                         }
@@ -63,6 +68,10 @@ struct AddRxView: View {
                 Spacer()
             }
         }
+        .onAppear {
+            notificationManager.reloadAuthorizationStatus()
+        }
+        
     }
 }
 
