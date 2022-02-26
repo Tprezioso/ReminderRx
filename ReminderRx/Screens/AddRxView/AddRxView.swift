@@ -97,5 +97,6 @@ class AddRxStateModel: ObservableObject {
         prescription.refills = refills
         prescription.isOn = false
         prescription.isNotificationOn = isNotificationOn
+        prescription.savedDate = date
     }
 }

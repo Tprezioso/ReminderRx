@@ -7,8 +7,9 @@
         <attribute name="isOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="refills" attributeType="String"/>
+        <attribute name="savedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Prescriptions" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Prescriptions" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

@@ -41,7 +41,7 @@ struct EditRxView: View {
                                     HStack {
                                         Text("Time")
                                         Spacer()
-                                        DatePicker("", selection: $date, displayedComponents: [.hourAndMinute])
+                                        DatePicker("", selection: Binding($prescription.savedDate, Date()), displayedComponents: [.hourAndMinute])
                                     }
                                 }
                                 
