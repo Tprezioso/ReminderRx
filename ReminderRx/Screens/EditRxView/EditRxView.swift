@@ -11,7 +11,7 @@ import EventKit
 struct EditRxView: View {
     @State var date = Date()
     @Binding var isShowingDetail: Bool
-    @AppStorage("hasDailyReminder") var hasDailyReminder = false
+//    @AppStorage("hasDailyReminder") var hasDailyReminder = false
     @ObservedObject var prescription: Prescriptions
     @Environment(\.managedObjectContext) var moc
     @StateObject var notificationManager = NotificationManager()
@@ -33,11 +33,11 @@ struct EditRxView: View {
                             if notificationManager.authorizationStatus == .denied {
                                 Text("Please go into your setting and enable Notification to use daily notification reminders")
                             } else {
-                                Toggle("Daily notification reminder", isOn: $hasDailyReminder)
-                                    .onChange(of: hasDailyReminder) { value in
+                                Toggle("Daily notification reminder", isOn: $prescription.isNotificationOn)
+                                    .onChange(of: prescription.isNotificationOn) { value in
                                         if !value { notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? UUID().uuidString) }
                                     }
-                                if hasDailyReminder {
+                                if prescription.isNotificationOn {
                                     HStack {
                                         Text("Time")
                                         Spacer()

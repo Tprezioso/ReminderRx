@@ -12,7 +12,6 @@ struct AddRxView: View {
     @Binding var isShowingDetail: Bool
     @Environment(\.managedObjectContext) var moc
     @StateObject var notificationManager = NotificationManager()
-    @AppStorage("hasDailyReminder") var hasDailyReminder = false
 
     var body: some View {
         ZStack {
@@ -30,12 +29,12 @@ struct AddRxView: View {
                             if notificationManager.authorizationStatus == .denied {
                                 Text("Please go into your setting and enable Notification to use daily notification reminders")
                             } else {
-                                Toggle("Daily notification reminder", isOn: $hasDailyReminder)
-                                    .onChange(of: hasDailyReminder) { value in
+                                Toggle("Daily notification reminder", isOn: $stateModel.isNotificationOn)
+                                    .onChange(of: stateModel.isNotificationOn) { value in
 //                                        if value { notificationManager.reloadAuthorizationStatus() }
                                         if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
                                     }
-                                if hasDailyReminder {
+                                if stateModel.isNotificationOn {
                                     HStack {
                                         Text("Time")
                                         Spacer()
@@ -89,6 +88,7 @@ class AddRxStateModel: ObservableObject {
     @Published var count = ""
     @Published var refills = ""
     @Published var date = Date()
+    @Published var isNotificationOn = false
     
     func savePrescription(_ prescription: Prescriptions) {
         prescription.id = id
@@ -96,5 +96,6 @@ class AddRxStateModel: ObservableObject {
         prescription.count = count
         prescription.refills = refills
         prescription.isOn = false
+        prescription.isNotificationOn = isNotificationOn
     }
 }
