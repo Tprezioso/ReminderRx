@@ -36,7 +36,7 @@ final class NotificationManager: ObservableObject {
         }
     }
     
-    func createLocalNotification(title: String, hour: Int, minute: Int) async {
+    func createLocalNotification(id: String, title: String, hour: Int, minute: Int) async {
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.hour = hour
@@ -47,7 +47,7 @@ final class NotificationManager: ObservableObject {
         notificationContent.title = "Time to take your \(title)"
         notificationContent.sound = .default
         
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
+        let request = UNNotificationRequest(identifier: id, content: notificationContent, trigger: trigger)
         do {
             try await UNUserNotificationCenter.current().add(request)
         } catch {
@@ -55,8 +55,13 @@ final class NotificationManager: ObservableObject {
         }
     }
     
-    func removeAllNotifications() {
-//            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification])
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    func removeAllNotifications(id: String) {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+            for request in requests {
+                if request.identifier == id {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                }
+            }
+        }
     }
 }

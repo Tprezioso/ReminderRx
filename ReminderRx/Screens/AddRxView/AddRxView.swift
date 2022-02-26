@@ -29,7 +29,7 @@ struct AddRxView: View {
                         Section(header: Text("Set Notification Reminder")) {
                             Toggle("Daily notification reminder", isOn: $hasDailyReminder)
                                 .onChange(of: hasDailyReminder) { value in
-                                    if !value { notificationManager.removeAllNotifications() }
+                                    if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
                                 }
                             if hasDailyReminder {
                                 HStack {
@@ -75,13 +75,14 @@ struct AddRxView_Previews: PreviewProvider {
 }
 
 class AddRxStateModel: ObservableObject {
+    @Published var id = UUID()
     @Published var name = ""
     @Published var count = ""
     @Published var refills = ""
     @Published var date = Date()
     
     func savePrescription(_ prescription: Prescriptions) {
-        prescription.id = UUID()
+        prescription.id = id
         prescription.name = name
         prescription.count = count
         prescription.refills = refills

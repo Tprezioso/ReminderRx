@@ -32,7 +32,7 @@ struct EditRxView: View {
                         Section(header: Text("Set Notification Reminder")) {
                             Toggle("Daily notification reminder", isOn: $hasDailyReminder)
                                 .onChange(of: hasDailyReminder) { value in
-                                    if !value { notificationManager.removeAllNotifications() }
+                                    if !value { notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? UUID().uuidString) }
                                 }
                             if hasDailyReminder {
                                 HStack {
@@ -49,7 +49,7 @@ struct EditRxView: View {
                         Task { @MainActor in
                             let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
                             guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
-                            await notificationManager.createLocalNotification(title: prescription.name ?? "", hour: hour, minute: minute)
+                            await notificationManager.createLocalNotification(id: prescription.id?.uuidString ?? UUID().uuidString, title: prescription.name ?? "", hour: hour, minute: minute)
                         }
                         try? moc.save()
                         isShowingDetail = false
