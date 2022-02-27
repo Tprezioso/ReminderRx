@@ -31,7 +31,6 @@ struct AddRxView: View {
                             } else {
                                 Toggle("Daily notification reminder", isOn: $stateModel.isNotificationOn)
                                     .onChange(of: stateModel.isNotificationOn) { value in
-//                                        if value { notificationManager.reloadAuthorizationStatus() }
                                         if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
                                     }
                                 if stateModel.isNotificationOn {

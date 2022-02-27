@@ -6,15 +6,12 @@
 //
 
 import SwiftUI
-import EventKit
 
 struct EditRxView: View {
-    @State var date = Date()
-    @Binding var isShowingDetail: Bool
-//    @AppStorage("hasDailyReminder") var hasDailyReminder = false
-    @ObservedObject var prescription: Prescriptions
     @Environment(\.managedObjectContext) var moc
     @StateObject var notificationManager = NotificationManager()
+    @StateObject var stateModel: EditRxStateModel
+    @Binding var isShowingDetail: Bool
     
     var body: some View {
         ZStack {
@@ -22,26 +19,26 @@ struct EditRxView: View {
                 VStack {
                     List {
                         Section(header: Text("Edit")) {
-                            TextField("Rx Name", text: Binding($prescription.name, ""))
-                            TextField("Number of Pills", text: Binding($prescription.count, ""))
+                            TextField("Rx Name", text: Binding($stateModel.prescription.name, ""))
+                            TextField("Number of Pills", text: Binding($stateModel.prescription.count, ""))
                                 .keyboardType(.numberPad)
-                            TextField("Refills", text: Binding($prescription.refills, ""))
+                            TextField("Refills", text: Binding($stateModel.prescription.refills, ""))
                                 .keyboardType(.numberPad)
-                            Toggle("Marked as Checked", isOn: $prescription.isOn)
+                            Toggle("Marked as Checked", isOn: $stateModel.prescription.isOn)
                         }
                         Section(header: Text("Set Notification Reminder")) {
                             if notificationManager.authorizationStatus == .denied {
                                 Text("Please go into your setting and enable Notification to use daily notification reminders")
                             } else {
-                                Toggle("Daily notification reminder", isOn: $prescription.isNotificationOn)
-                                    .onChange(of: prescription.isNotificationOn) { value in
-                                        if !value { notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? UUID().uuidString) }
+                                Toggle("Daily notification reminder", isOn: $stateModel.prescription.isNotificationOn)
+                                    .onChange(of: stateModel.prescription.isNotificationOn) { value in
+                                        if !value { notificationManager.removeAllNotifications(id: stateModel.prescription.id?.uuidString ?? UUID().uuidString) }
                                     }
-                                if prescription.isNotificationOn {
+                                if stateModel.prescription.isNotificationOn {
                                     HStack {
                                         Text("Time")
                                         Spacer()
-                                        DatePicker("", selection: Binding($prescription.savedDate, Date()), displayedComponents: [.hourAndMinute])
+                                        DatePicker("", selection: Binding($stateModel.prescription.savedDate, Date()), displayedComponents: [.hourAndMinute])
                                     }
                                 }
                                 
@@ -52,9 +49,9 @@ struct EditRxView: View {
                     Spacer()
                     Button {
                         Task { @MainActor in
-                            let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+                            let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: stateModel.date)
                             guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
-                            await notificationManager.createLocalNotification(id: prescription.id?.uuidString ?? UUID().uuidString, title: prescription.name ?? "", hour: hour, minute: minute)
+                            await notificationManager.createLocalNotification(id: stateModel.prescription.id?.uuidString ?? UUID().uuidString, title: stateModel.prescription.name ?? "", hour: hour, minute: minute)
                         }
                         try? moc.save()
                         isShowingDetail = false
@@ -83,7 +80,7 @@ struct EditRxView: View {
 
 struct EditRxView_Previews: PreviewProvider {
     static var previews: some View {
-        EditRxView(isShowingDetail: .constant(true), prescription: Prescriptions())
+        EditRxView(stateModel: EditRxStateModel(prescription: Prescriptions()), isShowingDetail: .constant(true))
     }
 }
 
@@ -95,5 +92,14 @@ extension Binding {
         }
         // Unsafe unwrap because *we* know it's non-nil now.
         self.init(source)!
+    }
+}
+
+class EditRxStateModel: ObservableObject {
+    @Published var date = Date()
+    @Published var prescription: Prescriptions
+    
+    init(prescription: Prescriptions) {
+        self.prescription = prescription
     }
 }

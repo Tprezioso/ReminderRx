@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import EventKit
 
 struct HomeView: View {    
     @StateObject var stateModel = HomeViewStateModel()
@@ -51,7 +50,8 @@ struct HomeView: View {
                             .tint(.yellow)
                         }
                         .sheet(isPresented: $stateModel.editButtonTapped) {
-                            EditRxView(isShowingDetail: $stateModel.editButtonTapped, prescription: prescription)
+                            let editRxStateModel = EditRxStateModel(prescription: prescription)
+                            EditRxView(stateModel: editRxStateModel, isShowingDetail: $stateModel.editButtonTapped)
                         }
                     }
                 }
