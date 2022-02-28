@@ -58,7 +58,7 @@ struct EditRxView: View {
                     } label: {
                         SaveButtonView()
                     }
-                }
+                }.ignoresSafeArea(.keyboard)
             }
             VStack {
                 HStack {

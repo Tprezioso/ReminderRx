@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddRxView: View {
     @StateObject var stateModel = AddRxStateModel()
@@ -20,9 +21,12 @@ struct AddRxView: View {
                     List {
                         Section(header: Text("New Rx")) {
                             TextField("Rx Name", text: $stateModel.name)
+                                .validation(stateModel.nameValidation)
                             TextField("Number of Pills", text: $stateModel.count)
+                                .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)
                             TextField("Refills", text: $stateModel.refills)
+                                .validation(stateModel.refillValidation)
                                 .keyboardType(.numberPad)
                         }.navigationTitle("Add Prescription")
                         Section(header: Text("Set Notification Reminder")) {
@@ -51,7 +55,11 @@ struct AddRxView: View {
                         isShowingDetail = false
                     } label: {
                         SaveButtonView()
+                    }.onReceive(stateModel.allValidation) { validation in
+                        stateModel.isSaveDisabled = !validation.isSuccess
                     }
+                    .disabled(stateModel.isSaveDisabled)
+                    .opacity(stateModel.isSaveDisabled ? 0.4 : 1)
                 }
             }
             VStack {
@@ -88,7 +96,8 @@ class AddRxStateModel: ObservableObject {
     @Published var refills = ""
     @Published var date = Date()
     @Published var isNotificationOn = false
-    
+    @Published var isSaveDisabled = true
+        
     func savePrescription(_ prescription: Prescriptions) {
         prescription.id = id
         prescription.name = name
@@ -98,4 +107,27 @@ class AddRxStateModel: ObservableObject {
         prescription.isNotificationOn = isNotificationOn
         prescription.savedDate = date
     }
+    
+    lazy var nameValidation: ValidationPublisher = {
+        $name.nonEmptyValidator("Please enter a prescription name")
+    }()
+    
+    lazy var countValidation: ValidationPublisher = {
+        $count.nonEmptyValidator("Please enter the number of pills in your prescription")
+    }()
+    
+    lazy var refillValidation: ValidationPublisher = {
+        $refills.nonEmptyValidator("Please enter any refills")
+    }()
+    
+    
+    lazy var allValidation: ValidationPublisher = {
+            Publishers.CombineLatest3(
+                nameValidation,
+                countValidation,
+                refillValidation
+            ).map { v1, v2, v3 in
+                return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
+            }.eraseToAnyPublisher()
+        }()
 }

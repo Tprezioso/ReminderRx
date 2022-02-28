@@ -22,6 +22,10 @@
 		5535BE022749B682008729F8 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BE012749B682008729F8 /* XDismissButton.swift */; };
 		5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */; };
 		555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555ABFE027B7259800DBB3B3 /* NotificationManager.swift */; };
+		55DE930E27CC4C2A0055CB91 /* Publisher+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */; };
+		55DE931027CC4C840055CB91 /* SwiftUI+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */; };
+		55DE931227CC4CAF0055CB91 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE931127CC4CAF0055CB91 /* Validation.swift */; };
+		55DE931427CC4CCF0055CB91 /* ValidationPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE931327CC4CCF0055CB91 /* ValidationPublishers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,10 @@
 		5535BE012749B682008729F8 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Prescriptions.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
 		555ABFE027B7259800DBB3B3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Validation.swift"; sourceTree = "<group>"; };
+		55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Validation.swift"; sourceTree = "<group>"; };
+		55DE931127CC4CAF0055CB91 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		55DE931327CC4CCF0055CB91 /* ValidationPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPublishers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,7 @@
 			children = (
 				551573E1273B5D490048F779 /* ReminderRxApp.swift */,
 				55329F5B276ED49900E70D0B /* Screens */,
+				55DE930C27CC4C050055CB91 /* Validation */,
 				551573F1273F72F70048F779 /* Views */,
 				551573E5273B5D4A0048F779 /* Assets.xcassets */,
 				5535BDFC27494895008729F8 /* Managers */,
@@ -154,6 +163,17 @@
 				555ABFE027B7259800DBB3B3 /* NotificationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		55DE930C27CC4C050055CB91 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */,
+				55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */,
+				55DE931127CC4CAF0055CB91 /* Validation.swift */,
+				55DE931327CC4CCF0055CB91 /* ValidationPublishers.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,10 +252,14 @@
 				55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */,
 				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
 				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
+				55DE931227CC4CAF0055CB91 /* Validation.swift in Sources */,
 				555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */,
+				55DE931027CC4C840055CB91 /* SwiftUI+Validation.swift in Sources */,
 				55329F5F277E6C1700E70D0B /* EditRxView.swift in Sources */,
 				5503A8F4276EA18300EC1766 /* AddButtonView.swift.swift in Sources */,
+				55DE930E27CC4C2A0055CB91 /* Publisher+Validation.swift in Sources */,
 				551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */,
+				55DE931427CC4CCF0055CB91 /* ValidationPublishers.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
 				5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */,
 				55329F5D276ED51200E70D0B /* EmptyStateView.swift in Sources */,
