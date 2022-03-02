@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EditRxView: View {
     @Environment(\.managedObjectContext) var moc
@@ -19,10 +20,13 @@ struct EditRxView: View {
                 VStack {
                     List {
                         Section(header: Text("Edit")) {
-                            TextField("Rx Name", text: Binding($stateModel.prescription.name, ""))
-                            TextField("Number of Pills", text: Binding($stateModel.prescription.count, ""))
+                            TextField("Rx Name", text: $stateModel.name)
+                                .validation(stateModel.nameValidation)
+                            TextField("Number of Pills", text: $stateModel.count)
+                                .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)
-                            TextField("Refills", text: Binding($stateModel.prescription.refills, ""))
+                            TextField("Refills", text: $stateModel.refills)
+                                .validation(stateModel.refillValidation)
                                 .keyboardType(.numberPad)
                             Toggle("Marked as Checked", isOn: $stateModel.prescription.isOn)
                         }
@@ -58,7 +62,7 @@ struct EditRxView: View {
                     } label: {
                         SaveButtonView()
                     }
-                }.ignoresSafeArea(.keyboard)
+                }
             }
             VStack {
                 HStack {
@@ -97,9 +101,39 @@ extension Binding {
 
 class EditRxStateModel: ObservableObject {
     @Published var date = Date()
+    @Published var name = ""
+    @Published var count = ""
+    @Published var refills = ""
     @Published var prescription: Prescriptions
+    @Published var isSaveDisabled = true
     
     init(prescription: Prescriptions) {
         self.prescription = prescription
+        self.name = prescription.name ?? ""
+        self.count = prescription.count ?? ""
+        self.refills = prescription.refills ?? ""
     }
+    
+    lazy var nameValidation: ValidationPublisher = {
+        $name.nonEmptyValidator("Please enter a prescription name")
+    }()
+    
+    lazy var countValidation: ValidationPublisher = {
+        $count.nonEmptyValidator("Please enter the number of pills in your prescription")
+    }()
+    
+    lazy var refillValidation: ValidationPublisher = {
+        $refills.nonEmptyValidator("Please enter any refills")
+    }()
+    
+    
+    lazy var allValidation: ValidationPublisher = {
+            Publishers.CombineLatest3(
+                nameValidation,
+                countValidation,
+                refillValidation
+            ).map { v1, v2, v3 in
+                return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
+            }.eraseToAnyPublisher()
+    }()
 }

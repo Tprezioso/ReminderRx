@@ -129,5 +129,5 @@ class AddRxStateModel: ObservableObject {
             ).map { v1, v2, v3 in
                 return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
             }.eraseToAnyPublisher()
-        }()
+    }()
 }
