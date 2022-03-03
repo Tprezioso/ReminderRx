@@ -57,6 +57,7 @@ struct EditRxView: View {
                             guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
                             await notificationManager.createLocalNotification(id: stateModel.prescription.id?.uuidString ?? UUID().uuidString, title: stateModel.prescription.name ?? "", hour: hour, minute: minute)
                         }
+                        stateModel.savePrescription(stateModel.prescription)
                         try? moc.save()
                         isShowingDetail = false
                     } label: {
@@ -112,6 +113,13 @@ class EditRxStateModel: ObservableObject {
         self.name = prescription.name ?? ""
         self.count = prescription.count ?? ""
         self.refills = prescription.refills ?? ""
+    }
+    
+    func savePrescription(_ prescription: Prescriptions) {
+        prescription.name = name
+        prescription.count = count
+        prescription.refills = refills
+        prescription.savedDate = date
     }
     
     lazy var nameValidation: ValidationPublisher = {
