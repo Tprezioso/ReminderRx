@@ -11,6 +11,7 @@ class HomeViewStateModel: ObservableObject {
     @Published var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
     @Published var plusButtonTapped = false
     @Published var editButtonTapped = false
+    @Published var showingAlert = false
     @Environment(\.managedObjectContext) var moc
 
     func theDayHasChanged() -> Bool {
@@ -43,8 +44,12 @@ class HomeViewStateModel: ObservableObject {
         let count = Int(prescription.count ?? "0") ?? 0
         
         if !prescription.isOn {
-            newCount = count - 1
-            wasTapped = true
+            if Int(prescription.count ?? "0") != 0 {
+                newCount = count - 1
+                wasTapped = true
+            } else {
+                showingAlert.toggle()
+            }
             moc.performAndWait {
                 prescription.count = String(newCount)
                 prescription.isOn = wasTapped

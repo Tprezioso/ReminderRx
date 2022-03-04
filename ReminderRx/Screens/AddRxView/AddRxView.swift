@@ -38,11 +38,7 @@ struct AddRxView: View {
                                         if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
                                     }
                                 if stateModel.isNotificationOn {
-                                    HStack {
-                                        Text("Time")
-                                        Spacer()
-                                        DatePicker("", selection: $stateModel.date, displayedComponents: [.hourAndMinute])
-                                    }
+                                    DatePicker("Time", selection: $stateModel.date, displayedComponents: [.hourAndMinute])
                                 }
                             }
                         }

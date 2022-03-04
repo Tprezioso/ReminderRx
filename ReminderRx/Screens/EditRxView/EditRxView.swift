@@ -39,13 +39,8 @@ struct EditRxView: View {
                                         if !value { notificationManager.removeAllNotifications(id: stateModel.prescription.id?.uuidString ?? UUID().uuidString) }
                                     }
                                 if stateModel.prescription.isNotificationOn {
-                                    HStack {
-                                        Text("Time")
-                                        Spacer()
-                                        DatePicker("", selection: Binding($stateModel.prescription.savedDate, Date()), displayedComponents: [.hourAndMinute])
-                                    }
+                                    DatePicker("Time", selection: Binding($stateModel.prescription.savedDate, Date()), displayedComponents: [.hourAndMinute])
                                 }
-                                
                             }
                         }
                         .navigationTitle("Edit Prescription")

@@ -28,6 +28,9 @@ struct HomeView: View {
                         } label: {
                             PrescriptionCellButton(prescription: prescription)
                         }
+                        .alert(isPresented: $stateModel.showingAlert) {
+                            Alert(title: Text("Your Prescription is Done!"), message: Text("Please get your prescription refilled and update your prescription information"), dismissButton: .default(Text("OK")))
+                                }
                         .swipeActions {
                             Button {
                                 print("Delete")
