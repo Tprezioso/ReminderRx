@@ -34,9 +34,9 @@ struct AddRxView: View {
                                 Text("Please go into your setting and enable Notification to use daily notification reminders")
                             } else {
                                 Toggle("Daily notification reminder", isOn: $stateModel.isNotificationOn)
-                                    .onChange(of: stateModel.isNotificationOn) { value in
-                                        if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
-                                    }
+//                                    .onChange(of: stateModel.isNotificationOn) { value in
+//                                        if !value { notificationManager.removeAllNotifications(id: stateModel.id.uuidString) }
+//                                    }
                                 if stateModel.isNotificationOn {
                                     DatePicker("Time", selection: $stateModel.date, displayedComponents: [.hourAndMinute])
                                 }
@@ -45,10 +45,14 @@ struct AddRxView: View {
                     }.listStyle(PlainListStyle())
                     Spacer()
                     Button {
-                        Task { @MainActor in
+                        if stateModel.isNotificationOn {
                             let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: stateModel.date)
                             guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
-                            await notificationManager.createLocalNotification(id: stateModel.id.uuidString, title: stateModel.name, hour: hour, minute: minute)
+                            Task { @MainActor in
+                              await notificationManager.updateLocalNotification(id: stateModel.id.uuidString, title: stateModel.name, hour: hour, minute: minute)
+                            }
+                        } else {
+                            notificationManager.removeAllNotifications(id:stateModel.id.uuidString)
                         }
                         let savedPrescription = Prescriptions(context: moc)
                         stateModel.savePrescription(savedPrescription)
@@ -61,7 +65,7 @@ struct AddRxView: View {
                     }
                     .disabled(stateModel.isSaveDisabled)
                     .opacity(stateModel.isSaveDisabled ? 0.4 : 1)
-                }
+                }.ignoresSafeArea(.keyboard)
             }
             VStack {
                 HStack {
@@ -91,7 +95,7 @@ struct AddRxView_Previews: PreviewProvider {
 }
 
 class AddRxStateModel: ObservableObject {
-    @Published var id = UUID()
+    @Published var id: UUID
     @Published var name = ""
     @Published var count = ""
     @Published var refills = ""
