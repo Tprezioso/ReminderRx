@@ -44,7 +44,7 @@ class HomeViewStateModel: ObservableObject {
         let count = Int(prescription.count ?? "0") ?? 0
         
         if !prescription.isOn {
-            if Int(prescription.count ?? "0") != 0 {
+            if count != 0 {
                 newCount = count - 1
                 wasTapped = true
             } else {

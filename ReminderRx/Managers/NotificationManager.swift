@@ -64,4 +64,18 @@ final class NotificationManager: ObservableObject {
             }
         }
     }
+
+    func updateLocalNotification(id: String, title: String, hour: Int, minute: Int) async {
+        let notifications = await UNUserNotificationCenter.current().pendingNotificationRequests()
+        if notifications.isEmpty {
+            await self.createLocalNotification(id: id, title: title, hour: hour, minute: minute)
+        } else {
+            for request in notifications {
+                if request.identifier == id {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                    await self.createLocalNotification(id: id, title: title, hour: hour, minute: minute)
+                }
+            }
+        }
+    }
 }

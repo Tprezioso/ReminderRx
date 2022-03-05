@@ -45,6 +45,11 @@ struct AddRxView: View {
                     }.listStyle(PlainListStyle())
                     Spacer()
                     Button {
+                        Task { @MainActor in
+                            let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: stateModel.date)
+                            guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
+                            await notificationManager.createLocalNotification(id: stateModel.id.uuidString, title: stateModel.name, hour: hour, minute: minute)
+                        }
                         let savedPrescription = Prescriptions(context: moc)
                         stateModel.savePrescription(savedPrescription)
                         try? moc.save()
@@ -94,6 +99,9 @@ class AddRxStateModel: ObservableObject {
     @Published var isNotificationOn = false
     @Published var isSaveDisabled = true
         
+    init() {
+        self.id = UUID()
+    }
     func savePrescription(_ prescription: Prescriptions) {
         prescription.id = id
         prescription.name = name
