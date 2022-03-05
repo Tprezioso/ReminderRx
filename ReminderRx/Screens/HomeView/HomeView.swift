@@ -21,8 +21,7 @@ struct HomeView: View {
                 if prescriptions.isEmpty {
                     EmptyStateView(message: "Add a Prescription")
                 }
-                List {
-                    ForEach(prescriptions) { prescription in
+                List(prescriptions) { prescription in
                         Button {
                             stateModel.updatePrescription(prescription)
                         } label: {
@@ -47,16 +46,16 @@ struct HomeView: View {
                             
                             Button {
                                 stateModel.editButtonTapped.toggle()
+                                stateModel.prescription = prescription
                             } label: {
                                 Label("Edit", systemImage: "square.and.pencil")
                             }
                             .tint(.yellow)
                         }
                         .sheet(isPresented: $stateModel.editButtonTapped) {
-                            let editRxStateModel = EditRxStateModel(prescription: prescription)
+                            let editRxStateModel = EditRxStateModel(prescription: stateModel.prescription)
                             EditRxView(stateModel: editRxStateModel, isShowingDetail: $stateModel.editButtonTapped)
                         }
-                    }
                 }
                 .navigationTitle("Reminder RX")
                 .listStyle(.plain)

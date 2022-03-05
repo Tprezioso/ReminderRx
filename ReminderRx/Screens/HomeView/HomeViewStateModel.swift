@@ -12,6 +12,7 @@ class HomeViewStateModel: ObservableObject {
     @Published var plusButtonTapped = false
     @Published var editButtonTapped = false
     @Published var showingAlert = false
+    @Published var prescription = Prescriptions()
     @Environment(\.managedObjectContext) var moc
 
     func theDayHasChanged() -> Bool {
