@@ -14,6 +14,8 @@
 		551573E9273B5D4A0048F779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E8273B5D4A0048F779 /* Preview Assets.xcassets */; };
 		551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573EF273F5B060048F779 /* PrescriptionCellButton.swift */; };
 		551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573F2274339D30048F779 /* HomeViewStateModel.swift */; };
+		5529474727D3E4D9009E28BD /* EditRxStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5529474627D3E4D9009E28BD /* EditRxStateModel.swift */; };
+		5529474927D3E534009E28BD /* AddRxStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5529474827D3E534009E28BD /* AddRxStateModel.swift */; };
 		55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F59276EA5ED00E70D0B /* SaveButtonView.swift */; };
 		55329F5D276ED51200E70D0B /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F5C276ED51200E70D0B /* EmptyStateView.swift */; };
 		55329F5F277E6C1700E70D0B /* EditRxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F5E277E6C1700E70D0B /* EditRxView.swift */; };
@@ -37,6 +39,8 @@
 		551573E8273B5D4A0048F779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		551573EF273F5B060048F779 /* PrescriptionCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionCellButton.swift; sourceTree = "<group>"; };
 		551573F2274339D30048F779 /* HomeViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStateModel.swift; sourceTree = "<group>"; };
+		5529474627D3E4D9009E28BD /* EditRxStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRxStateModel.swift; sourceTree = "<group>"; };
+		5529474827D3E534009E28BD /* AddRxStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRxStateModel.swift; sourceTree = "<group>"; };
 		55329F59276EA5ED00E70D0B /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
 		55329F5C276ED51200E70D0B /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		55329F5E277E6C1700E70D0B /* EditRxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRxView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				5535BDFF2749A673008729F8 /* AddRxView.swift */,
+				5529474827D3E534009E28BD /* AddRxStateModel.swift */,
 			);
 			path = AddRxView;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				55329F5E277E6C1700E70D0B /* EditRxView.swift */,
+				5529474627D3E4D9009E28BD /* EditRxStateModel.swift */,
 			);
 			path = EditRxView;
 			sourceTree = "<group>";
@@ -249,9 +255,11 @@
 				5535BE002749A673008729F8 /* AddRxView.swift in Sources */,
 				5535BDFB27494866008729F8 /* PersistenceController.swift in Sources */,
 				5535BE022749B682008729F8 /* XDismissButton.swift in Sources */,
+				5529474727D3E4D9009E28BD /* EditRxStateModel.swift in Sources */,
 				55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */,
 				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
 				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
+				5529474927D3E534009E28BD /* AddRxStateModel.swift in Sources */,
 				55DE931227CC4CAF0055CB91 /* Validation.swift in Sources */,
 				555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */,
 				55DE931027CC4C840055CB91 /* SwiftUI+Validation.swift in Sources */,
