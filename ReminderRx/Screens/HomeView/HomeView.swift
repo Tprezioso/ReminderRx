@@ -33,6 +33,8 @@ struct HomeView: View {
                         .swipeActions {
                             Button {
                                 print("Delete")
+                                //TODO: need to delete specific notification as well from notification list
+                                notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? "")
                                 moc.delete(prescription)
                                 do {
                                     try moc.save()
