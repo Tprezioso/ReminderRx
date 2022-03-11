@@ -55,7 +55,7 @@ final class NotificationManager: ObservableObject {
         }
     }
     
-    func removeAllNotifications(id: String) {
+    func removeNotificationWith(id: String) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
                 if request.identifier == id {

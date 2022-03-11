@@ -35,7 +35,7 @@ struct HomeView: View {
                                 }
                         .swipeActions {
                             Button {
-                                notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? "")
+                                notificationManager.removeNotificationWith(id: prescription.id?.uuidString ?? "")
                                 moc.delete(prescription)
                                 do {
                                     try moc.save()

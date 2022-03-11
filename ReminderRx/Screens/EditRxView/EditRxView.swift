@@ -50,7 +50,7 @@ struct EditRxView: View {
                               await notificationManager.updateLocalNotification(id: stateModel.id.uuidString, title: stateModel.name, hour: hour, minute: minute)
                             }
                         } else {
-                            notificationManager.removeAllNotifications(id:stateModel.prescription.id?.uuidString ?? UUID().uuidString)
+                            notificationManager.removeNotificationWith(id:stateModel.prescription.id?.uuidString ?? UUID().uuidString)
                         }
                         stateModel.savePrescription(stateModel.prescription)
                         try? moc.save()
