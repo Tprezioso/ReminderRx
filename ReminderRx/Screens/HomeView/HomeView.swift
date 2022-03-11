@@ -28,12 +28,13 @@ struct HomeView: View {
                             PrescriptionCellButton(prescription: prescription)
                         }
                         .alert(isPresented: $stateModel.showingAlert) {
-                            Alert(title: Text("Your Prescription is Done!"), message: Text("Please get your prescription refilled and update your prescription information"), dismissButton: .default(Text("OK")))
+                            Alert(title: Text("Your Prescription is Done!"),
+                                  message: Text("Please get your prescription refilled and update your prescription information"),
+                                  dismissButton: .default(Text("OK"))
+                            )
                                 }
                         .swipeActions {
                             Button {
-                                print("Delete")
-                                //TODO: need to delete specific notification as well from notification list
                                 notificationManager.removeAllNotifications(id: prescription.id?.uuidString ?? "")
                                 moc.delete(prescription)
                                 do {
