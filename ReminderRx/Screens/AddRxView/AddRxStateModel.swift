@@ -16,7 +16,7 @@ class AddRxStateModel: ObservableObject {
     @Published var date = Date()
     @Published var isNotificationOn = false
     @Published var isSaveDisabled = true
-        
+    
     func savePrescription(_ prescription: Prescriptions) {
         prescription.id = id
         prescription.name = name
@@ -40,12 +40,12 @@ class AddRxStateModel: ObservableObject {
     }()
     
     lazy var allValidation: ValidationPublisher = {
-            Publishers.CombineLatest3(
-                nameValidation,
-                countValidation,
-                refillValidation
-            ).map { v1, v2, v3 in
-                return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
-            }.eraseToAnyPublisher()
+        Publishers.CombineLatest3(
+            nameValidation,
+            countValidation,
+            refillValidation
+        ).map { v1, v2, v3 in
+            return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
+        }.eraseToAnyPublisher()
     }()
 }

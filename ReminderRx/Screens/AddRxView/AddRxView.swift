@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AddRxView: View {
-    @StateObject var stateModel = AddRxStateModel()
-    @Binding var isShowingDetail: Bool
     @Environment(\.managedObjectContext) var moc
+    @StateObject var stateModel = AddRxStateModel()
     @StateObject var notificationManager = NotificationManager()
-
+    @Binding var isShowingDetail: Bool
+    
     var body: some View {
         ZStack {
             NavigationView {

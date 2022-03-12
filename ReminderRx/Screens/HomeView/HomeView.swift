@@ -9,10 +9,10 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {    
-    @StateObject var stateModel = HomeViewStateModel()
     @FetchRequest(sortDescriptors: []) var prescriptions: FetchedResults<Prescriptions>
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.managedObjectContext) var moc
+    @StateObject var stateModel = HomeViewStateModel()
     @StateObject var notificationManager = NotificationManager()
     
     var body: some View {
@@ -22,43 +22,43 @@ struct HomeView: View {
                     EmptyStateView(message: "Add a Prescription")
                 }
                 List(prescriptions) { prescription in
+                    Button {
+                        stateModel.updatePrescription(prescription)
+                    } label: {
+                        PrescriptionCellButton(prescription: prescription)
+                    }
+                    .alert(isPresented: $stateModel.showingAlert) {
+                        Alert(title: Text("Your Prescription is Done!"),
+                              message: Text("Please get your prescription refilled and update your prescription information"),
+                              dismissButton: .default(Text("OK"))
+                        )
+                    }
+                    .swipeActions {
                         Button {
-                            stateModel.updatePrescription(prescription)
+                            notificationManager.removeNotificationWith(id: prescription.id?.uuidString ?? "")
+                            moc.delete(prescription)
+                            do {
+                                try moc.save()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
                         } label: {
-                            PrescriptionCellButton(prescription: prescription)
+                            Label("Delete", systemImage: "trash")
                         }
-                        .alert(isPresented: $stateModel.showingAlert) {
-                            Alert(title: Text("Your Prescription is Done!"),
-                                  message: Text("Please get your prescription refilled and update your prescription information"),
-                                  dismissButton: .default(Text("OK"))
-                            )
-                                }
-                        .swipeActions {
-                            Button {
-                                notificationManager.removeNotificationWith(id: prescription.id?.uuidString ?? "")
-                                moc.delete(prescription)
-                                do {
-                                    try moc.save()
-                                } catch {
-                                    print(error.localizedDescription)
-                                }
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                            }
-                            .tint(.red)
-                            
-                            Button {
-                                stateModel.editButtonTapped.toggle()
-                                stateModel.prescription = prescription
-                            } label: {
-                                Label("Edit", systemImage: "square.and.pencil")
-                            }
-                            .tint(.yellow)
+                        .tint(.red)
+                        
+                        Button {
+                            stateModel.editButtonTapped.toggle()
+                            stateModel.prescription = prescription
+                        } label: {
+                            Label("Edit", systemImage: "square.and.pencil")
                         }
-                        .sheet(isPresented: $stateModel.editButtonTapped) {
-                            let editRxStateModel = EditRxStateModel(prescription: stateModel.prescription)
-                            EditRxView(stateModel: editRxStateModel, isShowingDetail: $stateModel.editButtonTapped)
-                        }
+                        .tint(.yellow)
+                    }
+                    .sheet(isPresented: $stateModel.editButtonTapped) {
+                        let editRxStateModel = EditRxStateModel(prescription: stateModel.prescription)
+                        EditRxView(stateModel: editRxStateModel, isShowingDetail: $stateModel.editButtonTapped)
+                    }
                 }
                 .navigationTitle("Reminder RX")
                 .listStyle(.plain)

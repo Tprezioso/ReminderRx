@@ -64,7 +64,7 @@ final class NotificationManager: ObservableObject {
             }
         }
     }
-
+    
     func updateLocalNotification(id: String, title: String, hour: Int, minute: Int) async {
         let notifications = await UNUserNotificationCenter.current().pendingNotificationRequests()
         if notifications.isEmpty {

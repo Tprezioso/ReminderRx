@@ -48,12 +48,12 @@ class EditRxStateModel: ObservableObject {
     }()
     
     lazy var allValidation: ValidationPublisher = {
-            Publishers.CombineLatest3(
-                nameValidation,
-                countValidation,
-                refillValidation
-            ).map { v1, v2, v3 in
-                return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
-            }.eraseToAnyPublisher()
+        Publishers.CombineLatest3(
+            nameValidation,
+            countValidation,
+            refillValidation
+        ).map { v1, v2, v3 in
+            return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
+        }.eraseToAnyPublisher()
     }()
 }

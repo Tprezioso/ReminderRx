@@ -8,13 +8,13 @@
 import SwiftUI
 
 class HomeViewStateModel: ObservableObject {
+    @Environment(\.managedObjectContext) var moc
     @Published var lastDateString = UserDefaults.standard.string(forKey: "lastDateString") ?? String()
     @Published var plusButtonTapped = false
     @Published var editButtonTapped = false
     @Published var showingAlert = false
     @Published var prescription = Prescriptions()
-    @Environment(\.managedObjectContext) var moc
-
+    
     func theDayHasChanged() -> Bool {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MM y"
@@ -29,7 +29,7 @@ class HomeViewStateModel: ObservableObject {
         
         let currentDate = Date()
         let currentDateString = formatter.string(from: currentDate)
-
+        
         if self.lastDateString != currentDateString {
             UserDefaults.standard.set(currentDateString, forKey: "lastDateString")
             UserDefaults.standard.synchronize()
@@ -58,7 +58,7 @@ class HomeViewStateModel: ObservableObject {
             }
         }
     }
-
+    
     func updatePrescriptionOnLoad(_ prescriptions: FetchedResults<Prescriptions>) {
         if theDayHasChanged() {
             for prescription in prescriptions {

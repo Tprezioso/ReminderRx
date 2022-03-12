@@ -11,9 +11,8 @@ import SwiftUI
 struct ValidationModifier: ViewModifier {
     
     @State var latestValidation: Validation = .success
-    
     let validationPublisher: ValidationPublisher
-        
+    
     func body(content: Content) -> some View {
         return VStack(alignment: .leading) {
             content
@@ -37,9 +36,7 @@ struct ValidationModifier: ViewModifier {
 }
 
 extension View {
-    
     func validation(_ validationPublisher: ValidationPublisher) -> some View {
         self.modifier(ValidationModifier(validationPublisher: validationPublisher))
     }
-    
 }

@@ -47,7 +47,7 @@ struct EditRxView: View {
                             let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: stateModel.date)
                             guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
                             Task { @MainActor in
-                              await notificationManager.updateLocalNotification(id: stateModel.id.uuidString, title: stateModel.name, hour: hour, minute: minute)
+                                await notificationManager.updateLocalNotification(id: stateModel.id.uuidString, title: stateModel.name, hour: hour, minute: minute)
                             }
                         } else {
                             notificationManager.removeNotificationWith(id:stateModel.prescription.id?.uuidString ?? UUID().uuidString)
