@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomProgressView: View {
     @Binding var progress: CGFloat
+    @State var total: Int
     
     var body: some View {
         ZStack {
@@ -25,11 +26,11 @@ struct CustomProgressView: View {
                 .rotationEffect(.degrees(-90))
                 .shadow(radius: 2)
             
-            Text("\(String(format: "%0.0f", progress * 100))")
-                .bold()
+            Text("\(String(format: "%0.0f", progress * CGFloat(total)))")
+                .font(.largeTitle)
             
         }
-        .frame(width: 50, height: 50)
+        .frame(width: 100, height: 100)
         .padding()
         .animation(.easeInOut, value: progress)
     }
@@ -38,8 +39,8 @@ struct CustomProgressView: View {
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CustomProgressView(progress: .constant(0.9))
-            CustomProgressView(progress: .constant(0.9))
+            CustomProgressView(progress: .constant(0.9), total: 100)
+            CustomProgressView(progress: .constant(0.9), total: 100)
                 .preferredColorScheme(.dark)
         }
     }
