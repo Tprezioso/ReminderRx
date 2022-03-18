@@ -24,6 +24,7 @@
 		5535BE022749B682008729F8 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BE012749B682008729F8 /* XDismissButton.swift */; };
 		5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */; };
 		555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555ABFE027B7259800DBB3B3 /* NotificationManager.swift */; };
+		556EF1BC27E41C0700246E86 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556EF1BB27E41C0700246E86 /* CustomProgressView.swift */; };
 		55DE930E27CC4C2A0055CB91 /* Publisher+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */; };
 		55DE931027CC4C840055CB91 /* SwiftUI+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */; };
 		55DE931227CC4CAF0055CB91 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE931127CC4CAF0055CB91 /* Validation.swift */; };
@@ -49,6 +50,7 @@
 		5535BE012749B682008729F8 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Prescriptions.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
 		555ABFE027B7259800DBB3B3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		556EF1BB27E41C0700246E86 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Validation.swift"; sourceTree = "<group>"; };
 		55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Validation.swift"; sourceTree = "<group>"; };
 		55DE931127CC4CAF0055CB91 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				5514AE02276D96F10045405F /* Buttons */,
 				55329F5C276ED51200E70D0B /* EmptyStateView.swift */,
+				556EF1BB27E41C0700246E86 /* CustomProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				55DE931427CC4CCF0055CB91 /* ValidationPublishers.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
 				5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */,
+				556EF1BC27E41C0700246E86 /* CustomProgressView.swift in Sources */,
 				55329F5D276ED51200E70D0B /* EmptyStateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
