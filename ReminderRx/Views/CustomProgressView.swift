@@ -26,6 +26,7 @@ struct CustomProgressView: View {
                 .shadow(radius: 2)
             
             Text("\(String(format: "%0.0f", progress * 100))")
+                .bold()
             
         }
         .frame(width: 50, height: 50)
@@ -36,6 +37,10 @@ struct CustomProgressView: View {
 
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomProgressView(progress: .constant(0.9))
+        Group {
+            CustomProgressView(progress: .constant(0.9))
+            CustomProgressView(progress: .constant(0.9))
+                .preferredColorScheme(.dark)
+        }
     }
 }
