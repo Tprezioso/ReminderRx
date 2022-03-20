@@ -21,6 +21,7 @@ class AddRxStateModel: ObservableObject {
         prescription.id = id
         prescription.name = name
         prescription.count = count
+        prescription.countTotal = count
         prescription.refills = refills
         prescription.isOn = false
         prescription.isNotificationOn = isNotificationOn

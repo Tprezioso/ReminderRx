@@ -13,6 +13,7 @@ class EditRxStateModel: ObservableObject {
     @Published var id: UUID
     @Published var name = ""
     @Published var count = ""
+    @Published var countTotal = ""
     @Published var refills = ""
     @Published var prescription: Prescriptions
     @Published var isNotificationOn: Bool
@@ -23,6 +24,7 @@ class EditRxStateModel: ObservableObject {
         self.id = prescription.id ?? UUID()
         self.name = prescription.name ?? ""
         self.count = prescription.count ?? ""
+        self.countTotal = prescription.countTotal ?? ""
         self.refills = prescription.refills ?? ""
         self.date = prescription.savedDate ?? Date()
         self.isNotificationOn = prescription.isNotificationOn
@@ -31,6 +33,7 @@ class EditRxStateModel: ObservableObject {
     func savePrescription(_ prescription: Prescriptions) {
         prescription.name = name
         prescription.count = count
+        prescription.countTotal = countTotal
         prescription.refills = refills
         prescription.savedDate = date
     }
@@ -42,17 +45,22 @@ class EditRxStateModel: ObservableObject {
     lazy var countValidation: ValidationPublisher = {
         $count.nonEmptyValidator("Please enter the number of pills in your prescription")
     }()
-    
+
+    lazy var countTotalValidation: ValidationPublisher = {
+        $countTotal.nonEmptyValidator("Please enter the total number of pills in your prescription")
+    }()
+
     lazy var refillValidation: ValidationPublisher = {
         $refills.nonEmptyValidator("Please enter any refills")
     }()
     
     lazy var allValidation: ValidationPublisher = {
-        Publishers.CombineLatest3(
+        Publishers.CombineLatest4(
             nameValidation,
             countValidation,
+            countTotalValidation,
             refillValidation
-        ).map { v1, v2, v3 in
+        ).map { v1, v2, v3, v4 in
             return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
         }.eraseToAnyPublisher()
     }()

@@ -21,6 +21,9 @@ struct EditRxView: View {
                         Section(header: Text("Edit")) {
                             TextField("Rx Name", text: $stateModel.name)
                                 .validation(stateModel.nameValidation)
+                            TextField("Starting Number of Pills", text: $stateModel.countTotal)
+                                .validation(stateModel.countTotalValidation)
+                                .keyboardType(.numberPad)
                             TextField("Number of Pills", text: $stateModel.count)
                                 .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)

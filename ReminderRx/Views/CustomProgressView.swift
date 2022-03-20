@@ -9,18 +9,18 @@ import SwiftUI
 
 struct CustomProgressView: View {
     @Binding var progress: String
-//    @State var total: Int
+    @Binding var total: String
     
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 10.0)
+                .stroke(lineWidth: 5.0)
                 .opacity(0.3)
-                .foregroundColor(Color.red)
+                .foregroundColor(Color.gray)
             
             Circle()
                 .trim(from: 0.0, to: CGFloat(convertProgress(progress)))
-                .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
+                .stroke(AngularGradient(colors: [.red, .orange, .yellow, .green], center: .center), style: StrokeStyle(lineWidth: 5.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color.red)
                 .rotationEffect(.degrees(-90))
             
@@ -33,8 +33,8 @@ struct CustomProgressView: View {
     
     func convertProgress(_ progress: String) -> Float {
         if let floatValue = Float(progress) {
-            print("Float value = \(floatValue / 100)")
-            return floatValue / 100
+            print("Float value = \(floatValue / Float(total)!)")
+            return floatValue / Float(total)!
         }
         return 0.0
     }
@@ -43,7 +43,7 @@ struct CustomProgressView: View {
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CustomProgressView(progress: .constant("95"))
+            CustomProgressView(progress: .constant("100"), total: .constant("100"))
 //            CustomProgressView(progress: .constant(0.9), total: 100)
 //                .preferredColorScheme(.dark)
         }
