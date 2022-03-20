@@ -12,12 +12,13 @@ struct PrescriptionCellButton: View {
     
     var body: some View {
         HStack {
-            VStack {
-                Text("Count")
-                Text(prescription.count ?? "")
-            }
-            .frame(height: 100)
-            .font(.title.weight(.thin))
+//            VStack {
+//                Text("Count")
+//                Text(prescription.count ?? "")
+//            }
+//            .frame(height: 100)
+//            .font(.title.weight(.thin))
+            CustomProgressView(progress: Binding($prescription.count, ""))
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Image(systemName: "pills.circle")

@@ -8,40 +8,44 @@
 import SwiftUI
 
 struct CustomProgressView: View {
-    @Binding var progress: CGFloat
-    @State var total: Int
+    @Binding var progress: String
+//    @State var total: Int
     
     var body: some View {
         ZStack {
-            // placeholder
             Circle()
-                .stroke(lineWidth: 10)
-                .foregroundColor(.gray)
-                .opacity(0.2)
+                .stroke(lineWidth: 10.0)
+                .opacity(0.3)
+                .foregroundColor(Color.red)
             
-            // progress circle
             Circle()
-                .trim(from: 0.0, to: min(progress, 1.0))
-                .stroke(AngularGradient(colors: [.red, .orange, .yellow, .green], center: .center), style: StrokeStyle(lineWidth: 10, lineCap: .butt, lineJoin: .miter))
+                .trim(from: 0.0, to: CGFloat(convertProgress(progress)))
+                .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
+                .foregroundColor(Color.red)
                 .rotationEffect(.degrees(-90))
-                .shadow(radius: 2)
             
-            Text("\(String(format: "%0.0f", progress * CGFloat(total)))")
+            Text(self.progress)
                 .font(.largeTitle)
-            
-        }
-        .frame(width: 100, height: 100)
+                .bold()
+        }.frame(width: 75, height: 75)
         .padding()
-        .animation(.easeInOut, value: progress)
+    }
+    
+    func convertProgress(_ progress: String) -> Float {
+        if let floatValue = Float(progress) {
+            print("Float value = \(floatValue / 100)")
+            return floatValue / 100
+        }
+        return 0.0
     }
 }
 
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CustomProgressView(progress: .constant(0.9), total: 100)
-            CustomProgressView(progress: .constant(0.9), total: 100)
-                .preferredColorScheme(.dark)
+            CustomProgressView(progress: .constant("95"))
+//            CustomProgressView(progress: .constant(0.9), total: 100)
+//                .preferredColorScheme(.dark)
         }
     }
 }
