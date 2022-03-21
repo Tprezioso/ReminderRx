@@ -18,20 +18,26 @@ struct EditRxView: View {
             NavigationView {
                 VStack {
                     List {
-                        Section(header: Text("Edit")) {
+                        Section(header: Text("Name")) {
                             TextField("Rx Name", text: $stateModel.name)
                                 .validation(stateModel.nameValidation)
+                        }
+                        Section(header: Text("Total Number of Pills")) {
                             TextField("Starting Number of Pills", text: $stateModel.countTotal)
                                 .validation(stateModel.countTotalValidation)
                                 .keyboardType(.numberPad)
+                        }
+                        Section(header: Text("Current Number of Pills")) {
                             TextField("Number of Pills", text: $stateModel.count)
                                 .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)
+                        }
+                        Section(header: Text("Refill amount")) {
                             TextField("Refills", text: $stateModel.refills)
                                 .validation(stateModel.refillValidation)
                                 .keyboardType(.numberPad)
-                            Toggle("Marked as Checked", isOn: $stateModel.prescription.isOn)
                         }
+                        Toggle("Marked as Pill Taken Today", isOn: $stateModel.prescription.isOn)
                         Section(header: Text("Set Notification Reminder")) {
                             if notificationManager.authorizationStatus == .denied {
                                 Text("Please go into your setting and enable Notification to use daily notification reminders")
@@ -42,8 +48,8 @@ struct EditRxView: View {
                                 }
                             }
                         }
-                        .navigationTitle("Edit Prescription")
                     }.listStyle(PlainListStyle())
+                    .navigationTitle("Edit Prescription")
                     Spacer()
                     Button {
                         if stateModel.prescription.isNotificationOn {
@@ -61,7 +67,7 @@ struct EditRxView: View {
                     } label: {
                         SaveButtonView()
                     }
-                }.ignoresSafeArea(.keyboard)
+                }
             }
             VStack {
                 HStack {
