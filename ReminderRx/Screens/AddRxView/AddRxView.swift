@@ -60,7 +60,7 @@ struct AddRxView: View {
                     }
                     .disabled(stateModel.isSaveDisabled)
                     .opacity(stateModel.isSaveDisabled ? 0.4 : 1)
-                }.ignoresSafeArea(.keyboard)
+                }
             }
             VStack {
                 HStack {

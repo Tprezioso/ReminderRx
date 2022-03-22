@@ -43,9 +43,9 @@ struct CustomProgressView: View {
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CustomProgressView(progress: .constant("100"), total: .constant("100"))
-//            CustomProgressView(progress: .constant(0.9), total: 100)
-//                .preferredColorScheme(.dark)
+            CustomProgressView(progress: .constant("90"), total: .constant("100"))
+            CustomProgressView(progress: .constant("90"), total: .constant("100"))
+                .preferredColorScheme(.dark)
         }
     }
 }
