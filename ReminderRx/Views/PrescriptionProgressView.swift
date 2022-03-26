@@ -1,5 +1,5 @@
 //
-//  CustomProgressView.swift
+//  PrescriptionProgressView.swift
 //  ReminderRx
 //
 //  Created by Thomas Prezioso Jr on 3/17/22.
@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct CustomProgressView: View {
-    @Binding var progress: String
-    @Binding var total: String
+struct PrescriptionProgressView: View {
+    @StateObject var prescription: Prescriptions
     
     var body: some View {
         ZStack {
@@ -19,22 +18,21 @@ struct CustomProgressView: View {
                 .foregroundColor(Color.gray)
             
             Circle()
-                .trim(from: 0.0, to: CGFloat(convertProgress(progress)))
+                .trim(from: 0.0, to: CGFloat(convertPrescriptionCount(prescription.count ?? "")))
                 .stroke(AngularGradient(colors: [.red, .orange, .yellow, .green], center: .center), style: StrokeStyle(lineWidth: 5.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color.red)
                 .rotationEffect(.degrees(-90))
             
-            Text(self.progress)
+            Text(prescription.count ?? "")
                 .font(.largeTitle)
                 .bold()
         }.frame(width: 75, height: 75)
         .padding()
     }
     
-    func convertProgress(_ progress: String) -> Float {
-        if let floatValue = Float(progress) {
-            print("Float value = \(floatValue / Float(total)!)")
-            return floatValue / Float(total)!
+    func convertPrescriptionCount(_ count: String) -> Float {
+        if let floatValue = Float(prescription.count ?? "") {
+            return floatValue / Float(prescription.countTotal ?? "")!
         }
         return 0.0
     }
@@ -43,8 +41,8 @@ struct CustomProgressView: View {
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CustomProgressView(progress: .constant("90"), total: .constant("100"))
-            CustomProgressView(progress: .constant("90"), total: .constant("100"))
+            PrescriptionProgressView(prescription: Prescriptions())
+            PrescriptionProgressView(prescription: Prescriptions())
                 .preferredColorScheme(.dark)
         }
     }

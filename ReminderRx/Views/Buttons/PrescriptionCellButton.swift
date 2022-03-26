@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PrescriptionCellButton: View {
-    @ObservedObject var prescription: Prescriptions
+    @StateObject var prescription: Prescriptions
     
     var body: some View {
         HStack {
-            CustomProgressView(progress: Binding($prescription.count, "0"), total: Binding($prescription.countTotal, "0"))
+            PrescriptionProgressView(prescription: prescription)
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Image(systemName: "pills.circle")
