@@ -24,15 +24,17 @@ struct PrescriptionProgressView: View {
                 .rotationEffect(.degrees(-90))
             
             Text(prescription.count ?? "")
-                .font(.largeTitle)
                 .bold()
+                .minimumScaleFactor(0.5)
+                .font(.largeTitle)
+                .padding(.horizontal, 5)
         }.frame(width: 75, height: 75)
         .padding()
     }
     
     func convertPrescriptionCount(_ count: String) -> Float {
         if let floatValue = Float(prescription.count ?? "") {
-            return floatValue / Float(prescription.countTotal ?? "")!
+            return floatValue / (Float(prescription.countTotal ?? "") ?? 0.0) 
         }
         return 0.0
     }

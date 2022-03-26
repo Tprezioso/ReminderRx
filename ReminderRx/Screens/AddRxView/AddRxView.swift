@@ -22,9 +22,19 @@ struct AddRxView: View {
                             TextField("Rx Name", text: $stateModel.name)
                                 .validation(stateModel.nameValidation)
                             TextField("Number of Pills", text: $stateModel.count)
+                                .onChange(of: stateModel.count, perform: { value in
+                                       if stateModel.count.count > 5 {
+                                           stateModel.count = String(stateModel.count.prefix(5))
+                                      }
+                                  })
                                 .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)
                             TextField("Refills", text: $stateModel.refills)
+                                .onChange(of: stateModel.count, perform: { value in
+                                       if stateModel.refills.count > 3 {
+                                           stateModel.refills = String(stateModel.count.prefix(3))
+                                      }
+                                  })
                                 .validation(stateModel.refillValidation)
                                 .keyboardType(.numberPad)
                         }.navigationTitle("Add Prescription")

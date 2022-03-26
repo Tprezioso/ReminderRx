@@ -11,16 +11,19 @@ struct PrescriptionCellButton: View {
     @StateObject var prescription: Prescriptions
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             PrescriptionProgressView(prescription: prescription)
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Image(systemName: "pills.circle")
+                        .imageScale(.large)
                     Text("Name: \(prescription.name ?? "")")
+                        .lineLimit(2)
                 }
                 
                 HStack {
                     Image(systemName: "arrow.clockwise.circle")
+                        .imageScale(.large)
                     Text("Refill: \(prescription.refills ?? "")")
                 }
             }

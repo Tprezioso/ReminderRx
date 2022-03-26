@@ -17,7 +17,7 @@ class EditRxStateModel: ObservableObject {
     @Published var refills = ""
     @Published var prescription: Prescriptions
     @Published var isNotificationOn: Bool
-    @Published var isSaveDisabled = true
+    @Published var isSaveDisabled = false
     
     init(prescription: Prescriptions) {
         self.prescription = prescription
@@ -61,7 +61,7 @@ class EditRxStateModel: ObservableObject {
             countTotalValidation,
             refillValidation
         ).map { v1, v2, v3, v4 in
-            return [v1, v2, v3].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
+            return [v1, v2, v3, v4].allSatisfy { $0.isSuccess } ? .success : .failure(message: "")
         }.eraseToAnyPublisher()
     }()
 }

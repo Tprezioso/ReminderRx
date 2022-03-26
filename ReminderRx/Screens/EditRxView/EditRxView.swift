@@ -24,16 +24,31 @@ struct EditRxView: View {
                         }
                         Section(header: Text("Total Number of Pills")) {
                             TextField("Starting Number of Pills", text: $stateModel.countTotal)
+                                .onChange(of: stateModel.countTotal, perform: { value in
+                                    if stateModel.countTotal.count > 5 {
+                                        stateModel.countTotal = String(stateModel.countTotal.prefix(5))
+                                    }
+                                })
                                 .validation(stateModel.countTotalValidation)
                                 .keyboardType(.numberPad)
                         }
                         Section(header: Text("Current Number of Pills")) {
                             TextField("Number of Pills", text: $stateModel.count)
+                                .onChange(of: stateModel.count, perform: { value in
+                                    if stateModel.count.count > 5 {
+                                        stateModel.count = String(stateModel.count.prefix(5))
+                                    }
+                                })
                                 .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)
                         }
                         Section(header: Text("Refill amount")) {
                             TextField("Refills", text: $stateModel.refills)
+                                .onChange(of: stateModel.refills, perform: { value in
+                                    if stateModel.refills.count > 3 {
+                                        stateModel.refills = String(stateModel.refills.prefix(3))
+                                    }
+                                })
                                 .validation(stateModel.refillValidation)
                                 .keyboardType(.numberPad)
                         }
@@ -49,7 +64,7 @@ struct EditRxView: View {
                             }
                         }
                     }.listStyle(PlainListStyle())
-                    .navigationTitle("Edit Prescription")
+                        .navigationTitle("Edit Prescription")
                     Spacer()
                     Button {
                         if stateModel.prescription.isNotificationOn {
@@ -66,7 +81,10 @@ struct EditRxView: View {
                         isShowingDetail = false
                     } label: {
                         SaveButtonView()
-                    }
+                    }.onReceive(stateModel.allValidation) { validation in
+                        stateModel.isSaveDisabled = !validation.isSuccess
+                    }.disabled(stateModel.isSaveDisabled)
+                        .opacity(stateModel.isSaveDisabled ? 0.4 : 1)
                 }
             }
             VStack {
@@ -101,5 +119,23 @@ extension Binding {
         }
         // Unsafe unwrap because *we* know it's non-nil now.
         self.init(source)!
+    }
+}
+
+struct TextFieldLimitModifer: ViewModifier {
+    @Binding var value: String
+    var length: Int
+    
+    func body(content: Content) -> some View {
+        content
+            .onReceive(value.publisher.collect()) {
+                value = String($0.prefix(length))
+            }
+    }
+}
+
+extension View {
+    func limitInputLength(value: Binding<String>, length: Int) -> some View {
+        self.modifier(TextFieldLimitModifer(value: value, length: length))
     }
 }
