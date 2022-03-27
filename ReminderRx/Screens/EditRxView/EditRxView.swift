@@ -83,8 +83,8 @@ struct EditRxView: View {
                         SaveButtonView()
                     }.onReceive(stateModel.allValidation) { validation in
                         stateModel.isSaveDisabled = !validation.isSuccess
-                    }.disabled(stateModel.isSaveDisabled)
-                        .opacity(stateModel.isSaveDisabled ? 0.4 : 1)
+                    }.disabled(stateModel.name.isEmpty || stateModel.countTotal.isEmpty || stateModel.count.isEmpty || stateModel.refills.isEmpty)
+                        .opacity(stateModel.name.isEmpty || stateModel.countTotal.isEmpty || stateModel.count.isEmpty || stateModel.refills.isEmpty ? 0.4 : 1)
                 }
             }
             VStack {

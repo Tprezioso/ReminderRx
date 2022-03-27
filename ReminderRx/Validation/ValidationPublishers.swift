@@ -24,13 +24,4 @@ class ValidationPublishers {
         .debounce(for: 1.0, scheduler: DispatchQueue.main)
         .eraseToAnyPublisher()
     }
-    
-    static func dateValidation(for publisher: Published<Date>.Publisher,
-                               afterDate after: Date = .distantPast,
-                               beforeDate before: Date = .distantFuture,
-                               errorMessage: @autoclosure @escaping ValidationErrorClosure) -> ValidationPublisher {
-        return publisher.map { date in
-            return date > after && date < before ? .success : .failure(message: errorMessage())
-        }.eraseToAnyPublisher()
-    }
 }
