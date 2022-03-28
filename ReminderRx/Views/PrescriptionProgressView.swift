@@ -19,7 +19,7 @@ struct PrescriptionProgressView: View {
             
             Circle()
                 .trim(from: 0.0, to: CGFloat(convertPrescriptionCount(prescription.count ?? "")))
-                .stroke(AngularGradient(colors: [.red, .orange, .yellow, .green], center: .center), style: StrokeStyle(lineWidth: 5.0, lineCap: .round, lineJoin: .round))
+                .stroke(AngularGradient(colors: [.red, .yellow, .green], center: .center), style: StrokeStyle(lineWidth: 5.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color.red)
                 .rotationEffect(.degrees(-90))
             
