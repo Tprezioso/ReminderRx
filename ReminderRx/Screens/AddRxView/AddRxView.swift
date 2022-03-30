@@ -20,6 +20,11 @@ struct AddRxView: View {
                     List {
                         Section(header: Text("New Rx")) {
                             TextField("Rx Name", text: $stateModel.name)
+                                .onChange(of: stateModel.name, perform: { value in
+                                       if stateModel.name.count > 50 {
+                                           stateModel.name = String(stateModel.name.prefix(50))
+                                      }
+                                  })
                                 .validation(stateModel.nameValidation)
                             TextField("Number of Pills", text: $stateModel.count)
                                 .onChange(of: stateModel.count, perform: { value in
@@ -30,7 +35,7 @@ struct AddRxView: View {
                                 .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)
                             TextField("Refills", text: $stateModel.refills)
-                                .onChange(of: stateModel.count, perform: { value in
+                                .onChange(of: stateModel.refills, perform: { value in
                                        if stateModel.refills.count > 3 {
                                            stateModel.refills = String(stateModel.count.prefix(3))
                                       }

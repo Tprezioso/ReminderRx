@@ -20,6 +20,11 @@ struct EditRxView: View {
                     List {
                         Section(header: Text("Name")) {
                             TextField("Rx Name", text: $stateModel.name)
+                                .onChange(of: stateModel.name, perform: { value in
+                                       if stateModel.name.count > 50 {
+                                           stateModel.name = String(stateModel.name.prefix(50))
+                                      }
+                                  })
                                 .validation(stateModel.nameValidation)
                         }
                         Section(header: Text("Total Number of Pills")) {
@@ -119,23 +124,5 @@ extension Binding {
         }
         // Unsafe unwrap because *we* know it's non-nil now.
         self.init(source)!
-    }
-}
-
-struct TextFieldLimitModifer: ViewModifier {
-    @Binding var value: String
-    var length: Int
-    
-    func body(content: Content) -> some View {
-        content
-            .onReceive(value.publisher.collect()) {
-                value = String($0.prefix(length))
-            }
-    }
-}
-
-extension View {
-    func limitInputLength(value: Binding<String>, length: Int) -> some View {
-        self.modifier(TextFieldLimitModifer(value: value, length: length))
     }
 }
