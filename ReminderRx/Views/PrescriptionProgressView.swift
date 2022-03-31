@@ -34,7 +34,7 @@ struct PrescriptionProgressView: View {
     
     func convertPrescriptionCount(_ count: String) -> Float {
         if let floatValue = Float(prescription.count ?? "") {
-            return floatValue / (Float(prescription.countTotal ?? "") ?? 0.0) 
+            return floatValue / (Float(prescription.countTotal ?? "") ?? 0.0)
         }
         return 0.0
     }

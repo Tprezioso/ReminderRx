@@ -45,11 +45,11 @@ class EditRxStateModel: ObservableObject {
     lazy var countValidation: ValidationPublisher = {
         $count.nonEmptyValidator("Please enter the number of pills in your prescription")
     }()
-
+    
     lazy var countTotalValidation: ValidationPublisher = {
         $countTotal.nonEmptyValidator("Please enter the total number of pills in your prescription")
     }()
-
+    
     lazy var refillValidation: ValidationPublisher = {
         $refills.nonEmptyValidator("Please enter any refills")
     }()

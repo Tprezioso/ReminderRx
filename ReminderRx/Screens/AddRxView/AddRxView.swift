@@ -21,25 +21,25 @@ struct AddRxView: View {
                         Section(header: Text("New Rx")) {
                             TextField("Rx Name", text: $stateModel.name)
                                 .onChange(of: stateModel.name, perform: { value in
-                                       if stateModel.name.count > 50 {
-                                           stateModel.name = String(stateModel.name.prefix(50))
-                                      }
-                                  })
+                                    if stateModel.name.count > 50 {
+                                        stateModel.name = String(stateModel.name.prefix(50))
+                                    }
+                                })
                                 .validation(stateModel.nameValidation)
                             TextField("Number of Pills", text: $stateModel.count)
                                 .onChange(of: stateModel.count, perform: { value in
-                                       if stateModel.count.count > 5 {
-                                           stateModel.count = String(stateModel.count.prefix(5))
-                                      }
-                                  })
+                                    if stateModel.count.count > 5 {
+                                        stateModel.count = String(stateModel.count.prefix(5))
+                                    }
+                                })
                                 .validation(stateModel.countValidation)
                                 .keyboardType(.numberPad)
                             TextField("Refills", text: $stateModel.refills)
                                 .onChange(of: stateModel.refills, perform: { value in
-                                       if stateModel.refills.count > 3 {
-                                           stateModel.refills = String(stateModel.count.prefix(3))
-                                      }
-                                  })
+                                    if stateModel.refills.count > 3 {
+                                        stateModel.refills = String(stateModel.count.prefix(3))
+                                    }
+                                })
                                 .validation(stateModel.refillValidation)
                                 .keyboardType(.numberPad)
                         }.navigationTitle("Add Prescription")

@@ -21,10 +21,10 @@ struct EditRxView: View {
                         Section(header: Text("Name")) {
                             TextField("Rx Name", text: $stateModel.name)
                                 .onChange(of: stateModel.name, perform: { value in
-                                       if stateModel.name.count > 50 {
-                                           stateModel.name = String(stateModel.name.prefix(50))
-                                      }
-                                  })
+                                    if stateModel.name.count > 50 {
+                                        stateModel.name = String(stateModel.name.prefix(50))
+                                    }
+                                })
                                 .validation(stateModel.nameValidation)
                         }
                         Section(header: Text("Total Number of Pills")) {
@@ -89,7 +89,7 @@ struct EditRxView: View {
                     }.onReceive(stateModel.allValidation) { validation in
                         stateModel.isSaveDisabled = !validation.isSuccess
                     }.disabled(stateModel.name.isEmpty || stateModel.countTotal.isEmpty || stateModel.count.isEmpty || stateModel.refills.isEmpty)
-                    .opacity(stateModel.name.isEmpty || stateModel.countTotal.isEmpty || stateModel.count.isEmpty || stateModel.refills.isEmpty ? 0.4 : 1)
+                        .opacity(stateModel.name.isEmpty || stateModel.countTotal.isEmpty || stateModel.count.isEmpty || stateModel.refills.isEmpty ? 0.4 : 1)
                 }
             }
             VStack {
