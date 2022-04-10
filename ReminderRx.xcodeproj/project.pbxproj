@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		5503A8F3276EA18300EC1766 /* AddButtonView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonView.swift.swift; sourceTree = "<group>"; };
-		551573DE273B5D490048F779 /* ReminderRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReminderRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		551573DE273B5D490048F779 /* RXminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RXminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		551573E1273B5D490048F779 /* ReminderRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRxApp.swift; sourceTree = "<group>"; };
 		551573E3273B5D490048F779 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		551573E5273B5D4A0048F779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		551573DF273B5D490048F779 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				551573DE273B5D490048F779 /* ReminderRx.app */,
+				551573DE273B5D490048F779 /* RXminder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 			);
 			name = ReminderRx;
 			productName = ReminderRx;
-			productReference = 551573DE273B5D490048F779 /* ReminderRx.app */;
+			productReference = 551573DE273B5D490048F779 /* RXminder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -420,7 +420,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.ReminderRx;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RXminder;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -450,7 +450,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.ReminderRx;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RXminder;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

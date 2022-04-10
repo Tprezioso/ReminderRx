@@ -60,7 +60,7 @@ struct HomeView: View {
                         EditRxView(stateModel: editRxStateModel, isShowingDetail: $stateModel.editButtonTapped)
                     }
                 }
-                .navigationTitle("Reminder RX")
+                .navigationTitle("RXminder")
                 .listStyle(.plain)
                 HStack {
                     Spacer()
