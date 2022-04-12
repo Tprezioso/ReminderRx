@@ -14,6 +14,7 @@ struct ReminderRxApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .navigationViewStyle(StackNavigationViewStyle())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .onAppear { UIApplication.shared.addTapGestureRecognizer() }
         }
