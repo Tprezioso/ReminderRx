@@ -14,7 +14,9 @@ class HomeViewStateModel: ObservableObject {
     @Published var editButtonTapped = false
     @Published var showingAlert = false
     @Published var prescription = Prescriptions()
-    
+    @Published var forgotAlert = false
+    @Published var forgotRX = [String]()
+
     func theDayHasChanged() -> Bool {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MM y"
@@ -61,11 +63,18 @@ class HomeViewStateModel: ObservableObject {
     
     func updatePrescriptionOnLoad(_ prescriptions: FetchedResults<Prescriptions>) {
         if theDayHasChanged() {
+            forgotRX = []
             for prescription in prescriptions {
+                if !prescription.isOn && prescription.isNotificationOn {
+                    forgotRX.append(prescription.name!)
+                }
                 moc.performAndWait {
                     prescription.isOn = false
                     try? moc.save()
                 }
+            }
+            if !forgotRX.isEmpty {
+                forgotAlert = true
             }
         }
     }

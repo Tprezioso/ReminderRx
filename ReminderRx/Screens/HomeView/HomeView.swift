@@ -33,6 +33,12 @@ struct HomeView: View {
                               dismissButton: .default(Text("OK"))
                         )
                     }
+                    .alert(isPresented: $stateModel.forgotAlert) {
+                        Alert(title: Text("Oops!"),
+                              message: Text("It looks like you forgot to take \(stateModel.forgotRX.joined(separator: ", ")) yesterday. Don't forget to take them today!"),
+                              dismissButton: .default(Text("OK"))
+                        )
+                    }
                     .swipeActions {
                         Button {
                             notificationManager.removeNotificationWith(id: prescription.id?.uuidString ?? "")
