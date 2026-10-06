@@ -11,9 +11,13 @@ struct OnboardingView: View {
         case welcome, whatsNew, features, notifications, firstMedication
     }
 
+    enum NextStep {
+        case done, addMedication, importFromHealth
+    }
+
     /// Prescriptions brought over from 1.x; zero for a new install.
     let importedCount: Int
-    let onFinish: (_ addMedication: Bool) -> Void
+    let onFinish: (NextStep) -> Void
 
     @Environment(NotificationService.self) private var notificationService
     @State private var page: Page
@@ -22,7 +26,7 @@ struct OnboardingView: View {
         importedCount > 0 ? [.whatsNew, .notifications] : [.welcome, .features, .notifications, .firstMedication]
     }
 
-    init(importedCount: Int, onFinish: @escaping (_ addMedication: Bool) -> Void) {
+    init(importedCount: Int, onFinish: @escaping (NextStep) -> Void) {
         self.importedCount = importedCount
         self.onFinish = onFinish
         _page = State(initialValue: importedCount > 0 ? .whatsNew : .welcome)
@@ -115,8 +119,9 @@ struct OnboardingView: View {
                 }
                 secondaryButton("Not Now") { advance() }
             case .firstMedication:
-                primaryButton("Add Medication") { onFinish(true) }
-                secondaryButton("Maybe Later") { onFinish(false) }
+                primaryButton("Add Medication") { onFinish(.addMedication) }
+                secondaryButton("Import from Apple Health") { onFinish(.importFromHealth) }
+                secondaryButton("Maybe Later") { onFinish(.done) }
             default:
                 primaryButton(page == pages.last ? "Get Started" : "Continue") { advance() }
             }
@@ -140,7 +145,7 @@ struct OnboardingView: View {
 
     private func advance() {
         guard let index = pages.firstIndex(of: page), index + 1 < pages.count else {
-            onFinish(false)
+            onFinish(.done)
             return
         }
         withAnimation { page = pages[index + 1] }

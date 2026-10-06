@@ -37,14 +37,20 @@ struct RootView: View {
         .sheet(isPresented: $router.isShowingSettings) {
             SettingsView()
         }
+        .sheet(isPresented: $router.isShowingHealthImport) {
+            HealthImportView()
+        }
         .fullScreenCover(isPresented: Binding { !hasCompletedOnboarding } set: { hasCompletedOnboarding = !$0 }) {
-            OnboardingView(importedCount: LegacyImporter.importedCount) { addMedication in
+            OnboardingView(importedCount: LegacyImporter.importedCount) { nextStep in
                 hasCompletedOnboarding = true
-                if addMedication {
-                    Task {
-                        // Let the cover finish dismissing before presenting the editor.
-                        try? await Task.sleep(for: .milliseconds(500))
-                        router.editor = .new
+                guard nextStep != .done else { return }
+                Task {
+                    // Let the cover finish dismissing before presenting the next sheet.
+                    try? await Task.sleep(for: .milliseconds(500))
+                    switch nextStep {
+                    case .addMedication: router.editor = .new
+                    case .importFromHealth: router.isShowingHealthImport = true
+                    case .done: break
                     }
                 }
             }

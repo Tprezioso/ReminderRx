@@ -53,6 +53,7 @@ struct MedicationsView: View {
                     } actions: {
                         Button("Add Medication") { router.editor = .new }
                             .buttonStyle(.glassProminent)
+                        Button("Import from Apple Health") { router.isShowingHealthImport = true }
                     }
                 } else if filtered.isEmpty {
                     ContentUnavailableView.search(text: searchText)
@@ -65,7 +66,10 @@ struct MedicationsView: View {
                     Button("Settings", systemImage: "gearshape") { router.isShowingSettings = true }
                 }
                 ToolbarItem(placement: .primaryAction) {
-                    Button("Add Medication", systemImage: "plus") { router.editor = .new }
+                    Menu("Add", systemImage: "plus") {
+                        Button("New Medication", systemImage: "square.and.pencil") { router.editor = .new }
+                        Button("Import from Apple Health", systemImage: "heart.text.square") { router.isShowingHealthImport = true }
+                    }
                 }
             }
             .sensoryFeedback(.success, trigger: refillCount)

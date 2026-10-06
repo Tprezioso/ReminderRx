@@ -31,6 +31,7 @@ final class AppRouter {
     var selectedTab: Tab = .today
     var editor: EditorRoute?
     var isShowingSettings = false
+    var isShowingHealthImport = false
 
     #if DEBUG
     /// Opens a tab or sheet from launch arguments (`-debugTab history`, `-debugSheet editor`)

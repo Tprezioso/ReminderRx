@@ -37,6 +37,8 @@ final class NotificationService {
     func appDidBecomeActive() async {
         await refresh()
         await ReminderScheduler.rescheduleNow()
+        // Lets Siri recognize medication names in "I took … in ReminderRx".
+        ReminderRxShortcuts.updateAppShortcutParameters()
     }
 
     func openSystemSettings() {

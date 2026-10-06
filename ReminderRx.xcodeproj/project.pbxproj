@@ -36,6 +36,9 @@
 		559F596F3074855200F0EC6E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F596E3074855200F0EC6E /* SettingsView.swift */; };
 		559F59723074855200F0EC6E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59713074855200F0EC6E /* OnboardingView.swift */; };
 		559F59743074855200F0EC6E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59733074855200F0EC6E /* RootView.swift */; };
+		559F597D307486A400F0EC6E /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F597C307486A400F0EC6E /* AppShortcuts.swift */; };
+		559F597F3074871400F0EC6E /* HealthImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F597E3074871400F0EC6E /* HealthImportService.swift */; };
+		559F59813074871400F0EC6E /* HealthImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59803074871400F0EC6E /* HealthImportView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,9 @@
 		559F596E3074855200F0EC6E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		559F59713074855200F0EC6E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		559F59733074855200F0EC6E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		559F597C307486A400F0EC6E /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
+		559F597E3074871400F0EC6E /* HealthImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthImportService.swift; sourceTree = "<group>"; };
+		559F59803074871400F0EC6E /* HealthImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthImportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -237,6 +243,8 @@
 				559F59433074823D00F0EC6E /* AppDelegate.swift */,
 				559F59453074823D00F0EC6E /* NotificationService.swift */,
 				559F59573074844E00F0EC6E /* AppRouter.swift */,
+				559F597C307486A400F0EC6E /* AppShortcuts.swift */,
+				559F597E3074871400F0EC6E /* HealthImportService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				559F5968307484D200F0EC6E /* MedicationsView.swift */,
+				559F59803074871400F0EC6E /* HealthImportView.swift */,
 			);
 			path = Medications;
 			sourceTree = "<group>";
@@ -505,6 +514,7 @@
 			files = (
 				559F596F3074855200F0EC6E /* SettingsView.swift in Sources */,
 				559F59743074855200F0EC6E /* RootView.swift in Sources */,
+				559F59813074871400F0EC6E /* HealthImportView.swift in Sources */,
 				559F59443074823D00F0EC6E /* AppDelegate.swift in Sources */,
 				559F59533074842D00F0EC6E /* SupplyBar.swift in Sources */,
 				559F595D3074845E00F0EC6E /* DoseRow.swift in Sources */,
@@ -517,11 +527,13 @@
 				559F5964307484C200F0EC6E /* MedicationEditorModel.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
 				559F59513074842D00F0EC6E /* ProgressRing.swift in Sources */,
+				559F597F3074871400F0EC6E /* HealthImportService.swift in Sources */,
 				5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */,
 				559F595B3074844E00F0EC6E /* DayPeriod.swift in Sources */,
 				559F59583074844E00F0EC6E /* AppRouter.swift in Sources */,
 				559F59553074842E00F0EC6E /* CelebrationView.swift in Sources */,
 				559F596C3074851300F0EC6E /* HistoryView.swift in Sources */,
+				559F597D307486A400F0EC6E /* AppShortcuts.swift in Sources */,
 				559F594D3074842D00F0EC6E /* Theme.swift in Sources */,
 				559F594F3074842D00F0EC6E /* MedIcon.swift in Sources */,
 				559F59723074855200F0EC6E /* OnboardingView.swift in Sources */,
