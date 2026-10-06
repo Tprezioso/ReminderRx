@@ -14,8 +14,9 @@ final class NotificationManager: ObservableObject {
     
     func reloadAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
+            let status = settings.authorizationStatus
             DispatchQueue.main.async {
-                self.authorizationStatus = settings.authorizationStatus
+                self.authorizationStatus = status
             }
         }
     }
@@ -29,10 +30,8 @@ final class NotificationManager: ObservableObject {
     }
     
     func reloadLocalNotifications() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
-            DispatchQueue.main.async {
-                self.notification = notifications
-            }
+        Task {
+            notification = await UNUserNotificationCenter.current().pendingNotificationRequests()
         }
     }
     
