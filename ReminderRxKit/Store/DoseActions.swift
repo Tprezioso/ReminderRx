@@ -81,7 +81,7 @@ public struct DoseActions {
         return try? context.fetch(descriptor).first
     }
 
-    /// Saves and tells widgets and the reminder scheduler that data changed.
+    /// Saves, refreshes widgets and reschedules reminders.
     public func commit() {
         do {
             try context.save()
@@ -89,7 +89,7 @@ public struct DoseActions {
             Logger(subsystem: "com.Swifttom.ReminderRx", category: "DoseActions").error("Failed to save: \(error)")
         }
         WidgetCenter.shared.reloadAllTimelines()
-        NotificationCenter.default.post(name: .reminderRxDataDidChange, object: nil)
+        ReminderScheduler.setNeedsReschedule()
     }
 
     // MARK: - Private

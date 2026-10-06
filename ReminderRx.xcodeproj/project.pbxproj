@@ -11,7 +11,6 @@
 		551573E6273B5D4A0048F779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E5273B5D4A0048F779 /* Assets.xcassets */; };
 		551573E9273B5D4A0048F779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E8273B5D4A0048F779 /* Preview Assets.xcassets */; };
 		5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */; };
-		555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555ABFE027B7259800DBB3B3 /* NotificationManager.swift */; };
 		559F58E630747E5200F0EC6E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559F58E530747E5200F0EC6E /* WidgetKit.framework */; };
 		559F58E830747E5200F0EC6E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559F58E730747E5200F0EC6E /* SwiftUI.framework */; };
 		559F58F330747E5200F0EC6E /* ReminderRxWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 559F58E330747E5200F0EC6E /* ReminderRxWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -19,6 +18,8 @@
 		559F591130747E8D00F0EC6E /* ReminderRxKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 559F590A30747E8D00F0EC6E /* ReminderRxKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		559F59343074803200F0EC6E /* LegacyImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59333074803200F0EC6E /* LegacyImporter.swift */; };
 		559F59373074803200F0EC6E /* TemporaryHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59363074803200F0EC6E /* TemporaryHomeView.swift */; };
+		559F59443074823D00F0EC6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59433074823D00F0EC6E /* AppDelegate.swift */; };
+		559F59463074823D00F0EC6E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59453074823D00F0EC6E /* NotificationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +70,6 @@
 		551573E5273B5D4A0048F779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551573E8273B5D4A0048F779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Prescriptions.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
-		555ABFE027B7259800DBB3B3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		559F58DE30747E4F00F0EC6E /* ReminderRx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReminderRx.entitlements; sourceTree = "<group>"; };
 		559F58E330747E5200F0EC6E /* ReminderRxWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ReminderRxWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		559F58E530747E5200F0EC6E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
@@ -79,6 +79,8 @@
 		559F590A30747E8D00F0EC6E /* ReminderRxKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReminderRxKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		559F59333074803200F0EC6E /* LegacyImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyImporter.swift; sourceTree = "<group>"; };
 		559F59363074803200F0EC6E /* TemporaryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryHomeView.swift; sourceTree = "<group>"; };
+		559F59433074823D00F0EC6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		559F59453074823D00F0EC6E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -163,10 +165,10 @@
 				559F58DE30747E4F00F0EC6E /* ReminderRx.entitlements */,
 				551573E1273B5D490048F779 /* ReminderRxApp.swift */,
 				551573E5273B5D4A0048F779 /* Assets.xcassets */,
-				5535BDFC27494895008729F8 /* Managers */,
 				551573E7273B5D4A0048F779 /* Preview Content */,
 				559F59323074803200F0EC6E /* Migration */,
 				559F59383074803E00F0EC6E /* Temporary */,
+				559F59423074823D00F0EC6E /* Services */,
 			);
 			path = ReminderRx;
 			sourceTree = "<group>";
@@ -177,14 +179,6 @@
 				551573E8273B5D4A0048F779 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		5535BDFC27494895008729F8 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				555ABFE027B7259800DBB3B3 /* NotificationManager.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		559F58E430747E5200F0EC6E /* Frameworks */ = {
@@ -210,6 +204,15 @@
 				559F59363074803200F0EC6E /* TemporaryHomeView.swift */,
 			);
 			path = Temporary;
+			sourceTree = "<group>";
+		};
+		559F59423074823D00F0EC6E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				559F59433074823D00F0EC6E /* AppDelegate.swift */,
+				559F59453074823D00F0EC6E /* NotificationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,8 +399,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				559F59443074823D00F0EC6E /* AppDelegate.swift in Sources */,
 				559F59373074803200F0EC6E /* TemporaryHomeView.swift in Sources */,
-				555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */,
+				559F59463074823D00F0EC6E /* NotificationService.swift in Sources */,
 				559F59343074803200F0EC6E /* LegacyImporter.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
 				5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */,

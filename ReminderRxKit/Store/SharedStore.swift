@@ -29,8 +29,3 @@ public enum SharedStore {
     /// Settings shared with the widget extension.
     public static var defaults: UserDefaults { UserDefaults(suiteName: appGroupID) ?? .standard }
 }
-
-extension Notification.Name {
-    /// Posted on the main actor after `DoseActions` changes data, so the app can reschedule reminders.
-    public static let reminderRxDataDidChange = Notification.Name("ReminderRxDataDidChange")
-}
