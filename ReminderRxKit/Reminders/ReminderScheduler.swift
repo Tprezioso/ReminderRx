@@ -112,6 +112,28 @@ public enum ReminderScheduler {
         }
     }
 
+    /// Delivers a dose reminder for `medication` in a few seconds, for trying out the actions.
+    public static func sendTestReminder(for medication: Medication, in seconds: TimeInterval = 5) async {
+        guard let center else { return }
+        let scheduledDate = DoseScheduler().doses(for: medication.snapshot, on: .now).first?.scheduledDate ?? .now
+        let reminder = PlannedReminder(
+            kind: .snooze,
+            identifier: ReminderKind.snooze.identifier("test-\(UUID().uuidString)"),
+            fireDate: .now.addingTimeInterval(seconds),
+            title: "Time for \(medication.name)",
+            body: "Test reminder · try the Taken button",
+            reference: ReminderReference(medicationID: medication.id, scheduledDate: scheduledDate),
+            category: ReminderCategory.dose,
+            threadID: medication.id.uuidString
+        )
+        try? await center.add(request(for: reminder))
+    }
+
+    /// The number of pending notifications, for the debug section of Settings.
+    public static func pendingCount() async -> Int {
+        await center?.pendingIdentifiers().count ?? 0
+    }
+
     /// Pushes a medication's refill alert to tomorrow morning.
     public static func remindRefillTomorrow(medicationID: UUID, now: Date = .now) async {
         let planner = ReminderPlanner()

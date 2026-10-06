@@ -92,7 +92,8 @@ enum LegacyImporter {
             // Carry over today's "taken" check mark. Supply was already deducted by 1.x.
             if legacy.isOn, takenFlagIsCurrent,
                let dose = scheduler.doses(for: medication.snapshot, on: now).first {
-                let log = DoseLog(scheduledDate: dose.scheduledDate, loggedAt: now, status: .taken, quantity: dose.quantity)
+                // 1.x didn't record when the dose was taken, so assume it was on time.
+                let log = DoseLog(scheduledDate: dose.scheduledDate, loggedAt: min(dose.scheduledDate, now), status: .taken, quantity: dose.quantity)
                 context.insert(log)
                 log.medication = medication
             }

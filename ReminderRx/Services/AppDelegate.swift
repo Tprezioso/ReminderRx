@@ -20,9 +20,13 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     }
 
     nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        let action = response.actionIdentifier
+        if action == UNNotificationDefaultActionIdentifier {
+            await MainActor.run { AppRouter.shared.selectedTab = .today }
+            return
+        }
         let content = response.notification.request.content
         guard let reference = ReminderReference(userInfo: content.userInfo) else { return }
-        let action = response.actionIdentifier
         let title = content.title
         let body = content.body
         await ReminderResponseHandler.handle(action: action, reference: reference, title: title, body: body)

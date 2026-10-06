@@ -22,12 +22,10 @@ struct ReminderRxApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TemporaryHomeView()
+            RootView()
+                .environment(AppRouter.shared)
                 .environment(notificationService)
-                .task {
-                    // Onboarding (Phase 3) will take over asking for permission.
-                    await notificationService.requestAuthorizationIfNeeded()
-                }
+                .fontDesign(.rounded)
         }
         .modelContainer(container)
         .onChange(of: scenePhase) { _, phase in
