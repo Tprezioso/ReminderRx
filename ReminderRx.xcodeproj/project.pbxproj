@@ -7,33 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5503A8F4276EA18300EC1766 /* AddButtonView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503A8F3276EA18300EC1766 /* AddButtonView.swift.swift */; };
 		551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573E1273B5D490048F779 /* ReminderRxApp.swift */; };
-		551573E4273B5D490048F779 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573E3273B5D490048F779 /* HomeView.swift */; };
 		551573E6273B5D4A0048F779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E5273B5D4A0048F779 /* Assets.xcassets */; };
 		551573E9273B5D4A0048F779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551573E8273B5D4A0048F779 /* Preview Assets.xcassets */; };
-		551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573EF273F5B060048F779 /* PrescriptionCellButton.swift */; };
-		551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551573F2274339D30048F779 /* HomeViewStateModel.swift */; };
-		5529474727D3E4D9009E28BD /* EditRxStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5529474627D3E4D9009E28BD /* EditRxStateModel.swift */; };
-		5529474927D3E534009E28BD /* AddRxStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5529474827D3E534009E28BD /* AddRxStateModel.swift */; };
-		55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F59276EA5ED00E70D0B /* SaveButtonView.swift */; };
-		55329F5D276ED51200E70D0B /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F5C276ED51200E70D0B /* EmptyStateView.swift */; };
-		55329F5F277E6C1700E70D0B /* EditRxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55329F5E277E6C1700E70D0B /* EditRxView.swift */; };
-		5535BDFB27494866008729F8 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFA27494866008729F8 /* PersistenceController.swift */; };
-		5535BE002749A673008729F8 /* AddRxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BDFF2749A673008729F8 /* AddRxView.swift */; };
-		5535BE022749B682008729F8 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5535BE012749B682008729F8 /* XDismissButton.swift */; };
 		5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5551DD0927668E200002E873 /* Prescriptions.xcdatamodeld */; };
 		555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555ABFE027B7259800DBB3B3 /* NotificationManager.swift */; };
-		556EF1BC27E41C0700246E86 /* PrescriptionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556EF1BB27E41C0700246E86 /* PrescriptionProgressView.swift */; };
 		559F58E630747E5200F0EC6E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559F58E530747E5200F0EC6E /* WidgetKit.framework */; };
 		559F58E830747E5200F0EC6E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559F58E730747E5200F0EC6E /* SwiftUI.framework */; };
 		559F58F330747E5200F0EC6E /* ReminderRxWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 559F58E330747E5200F0EC6E /* ReminderRxWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		559F591030747E8D00F0EC6E /* ReminderRxKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559F590A30747E8D00F0EC6E /* ReminderRxKit.framework */; };
 		559F591130747E8D00F0EC6E /* ReminderRxKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 559F590A30747E8D00F0EC6E /* ReminderRxKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		55DE930E27CC4C2A0055CB91 /* Publisher+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */; };
-		55DE931027CC4C840055CB91 /* SwiftUI+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */; };
-		55DE931227CC4CAF0055CB91 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE931127CC4CAF0055CB91 /* Validation.swift */; };
-		55DE931427CC4CCF0055CB91 /* ValidationPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE931327CC4CCF0055CB91 /* ValidationPublishers.swift */; };
+		559F59343074803200F0EC6E /* LegacyImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59333074803200F0EC6E /* LegacyImporter.swift */; };
+		559F59373074803200F0EC6E /* TemporaryHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59363074803200F0EC6E /* TemporaryHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,25 +64,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5503A8F3276EA18300EC1766 /* AddButtonView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonView.swift.swift; sourceTree = "<group>"; };
 		551573DE273B5D490048F779 /* Script Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Script Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		551573E1273B5D490048F779 /* ReminderRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRxApp.swift; sourceTree = "<group>"; };
-		551573E3273B5D490048F779 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		551573E5273B5D4A0048F779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551573E8273B5D4A0048F779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		551573EF273F5B060048F779 /* PrescriptionCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionCellButton.swift; sourceTree = "<group>"; };
-		551573F2274339D30048F779 /* HomeViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStateModel.swift; sourceTree = "<group>"; };
-		5529474627D3E4D9009E28BD /* EditRxStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRxStateModel.swift; sourceTree = "<group>"; };
-		5529474827D3E534009E28BD /* AddRxStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRxStateModel.swift; sourceTree = "<group>"; };
-		55329F59276EA5ED00E70D0B /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
-		55329F5C276ED51200E70D0B /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		55329F5E277E6C1700E70D0B /* EditRxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRxView.swift; sourceTree = "<group>"; };
-		5535BDFA27494866008729F8 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		5535BDFF2749A673008729F8 /* AddRxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRxView.swift; sourceTree = "<group>"; };
-		5535BE012749B682008729F8 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		5551DD0A27668E200002E873 /* Prescriptions.xcdatamodeld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Prescriptions.xcdatamodeld.xcdatamodel; sourceTree = "<group>"; };
 		555ABFE027B7259800DBB3B3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		556EF1BB27E41C0700246E86 /* PrescriptionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionProgressView.swift; sourceTree = "<group>"; };
 		559F58DE30747E4F00F0EC6E /* ReminderRx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReminderRx.entitlements; sourceTree = "<group>"; };
 		559F58E330747E5200F0EC6E /* ReminderRxWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ReminderRxWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		559F58E530747E5200F0EC6E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
@@ -105,10 +77,8 @@
 		559F58FD30747E5800F0EC6E /* ReminderRxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReminderRxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		559F590430747E5800F0EC6E /* ReminderRxWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReminderRxWidgetsExtension.entitlements; sourceTree = "<group>"; };
 		559F590A30747E8D00F0EC6E /* ReminderRxKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReminderRxKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Validation.swift"; sourceTree = "<group>"; };
-		55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Validation.swift"; sourceTree = "<group>"; };
-		55DE931127CC4CAF0055CB91 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
-		55DE931327CC4CCF0055CB91 /* ValidationPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPublishers.swift; sourceTree = "<group>"; };
+		559F59333074803200F0EC6E /* LegacyImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyImporter.swift; sourceTree = "<group>"; };
+		559F59363074803200F0EC6E /* TemporaryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryHomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -162,35 +132,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5514AE02276D96F10045405F /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				5535BE012749B682008729F8 /* XDismissButton.swift */,
-				551573EF273F5B060048F779 /* PrescriptionCellButton.swift */,
-				5503A8F3276EA18300EC1766 /* AddButtonView.swift.swift */,
-				55329F59276EA5ED00E70D0B /* SaveButtonView.swift */,
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
-		5514AE03276D970A0045405F /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				551573E3273B5D490048F779 /* HomeView.swift */,
-				551573F2274339D30048F779 /* HomeViewStateModel.swift */,
-			);
-			path = HomeView;
-			sourceTree = "<group>";
-		};
-		5514AE04276D972A0045405F /* AddRxView */ = {
-			isa = PBXGroup;
-			children = (
-				5535BDFF2749A673008729F8 /* AddRxView.swift */,
-				5529474827D3E534009E28BD /* AddRxStateModel.swift */,
-			);
-			path = AddRxView;
-			sourceTree = "<group>";
-		};
 		551573D5273B5D490048F779 = {
 			isa = PBXGroup;
 			children = (
@@ -221,12 +162,11 @@
 			children = (
 				559F58DE30747E4F00F0EC6E /* ReminderRx.entitlements */,
 				551573E1273B5D490048F779 /* ReminderRxApp.swift */,
-				55329F5B276ED49900E70D0B /* Screens */,
-				55DE930C27CC4C050055CB91 /* Validation */,
-				551573F1273F72F70048F779 /* Views */,
 				551573E5273B5D4A0048F779 /* Assets.xcassets */,
 				5535BDFC27494895008729F8 /* Managers */,
 				551573E7273B5D4A0048F779 /* Preview Content */,
+				559F59323074803200F0EC6E /* Migration */,
+				559F59383074803E00F0EC6E /* Temporary */,
 			);
 			path = ReminderRx;
 			sourceTree = "<group>";
@@ -239,39 +179,9 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		551573F1273F72F70048F779 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5514AE02276D96F10045405F /* Buttons */,
-				55329F5C276ED51200E70D0B /* EmptyStateView.swift */,
-				556EF1BB27E41C0700246E86 /* PrescriptionProgressView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		55329F5B276ED49900E70D0B /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				5514AE03276D970A0045405F /* HomeView */,
-				55329F6027839D7500E70D0B /* EditRxView */,
-				5514AE04276D972A0045405F /* AddRxView */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		55329F6027839D7500E70D0B /* EditRxView */ = {
-			isa = PBXGroup;
-			children = (
-				55329F5E277E6C1700E70D0B /* EditRxView.swift */,
-				5529474627D3E4D9009E28BD /* EditRxStateModel.swift */,
-			);
-			path = EditRxView;
-			sourceTree = "<group>";
-		};
 		5535BDFC27494895008729F8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				5535BDFA27494866008729F8 /* PersistenceController.swift */,
 				555ABFE027B7259800DBB3B3 /* NotificationManager.swift */,
 			);
 			path = Managers;
@@ -286,15 +196,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		55DE930C27CC4C050055CB91 /* Validation */ = {
+		559F59323074803200F0EC6E /* Migration */ = {
 			isa = PBXGroup;
 			children = (
-				55DE930D27CC4C2A0055CB91 /* Publisher+Validation.swift */,
-				55DE930F27CC4C840055CB91 /* SwiftUI+Validation.swift */,
-				55DE931127CC4CAF0055CB91 /* Validation.swift */,
-				55DE931327CC4CCF0055CB91 /* ValidationPublishers.swift */,
+				559F59333074803200F0EC6E /* LegacyImporter.swift */,
 			);
-			path = Validation;
+			path = Migration;
+			sourceTree = "<group>";
+		};
+		559F59383074803E00F0EC6E /* Temporary */ = {
+			isa = PBXGroup;
+			children = (
+				559F59363074803200F0EC6E /* TemporaryHomeView.swift */,
+			);
+			path = Temporary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,26 +396,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5535BE002749A673008729F8 /* AddRxView.swift in Sources */,
-				5535BDFB27494866008729F8 /* PersistenceController.swift in Sources */,
-				5535BE022749B682008729F8 /* XDismissButton.swift in Sources */,
-				5529474727D3E4D9009E28BD /* EditRxStateModel.swift in Sources */,
-				55329F5A276EA5ED00E70D0B /* SaveButtonView.swift in Sources */,
-				551573E4273B5D490048F779 /* HomeView.swift in Sources */,
-				551573F3274339D30048F779 /* HomeViewStateModel.swift in Sources */,
-				5529474927D3E534009E28BD /* AddRxStateModel.swift in Sources */,
-				55DE931227CC4CAF0055CB91 /* Validation.swift in Sources */,
+				559F59373074803200F0EC6E /* TemporaryHomeView.swift in Sources */,
 				555ABFE127B7259800DBB3B3 /* NotificationManager.swift in Sources */,
-				55DE931027CC4C840055CB91 /* SwiftUI+Validation.swift in Sources */,
-				55329F5F277E6C1700E70D0B /* EditRxView.swift in Sources */,
-				5503A8F4276EA18300EC1766 /* AddButtonView.swift.swift in Sources */,
-				55DE930E27CC4C2A0055CB91 /* Publisher+Validation.swift in Sources */,
-				551573F0273F5B060048F779 /* PrescriptionCellButton.swift in Sources */,
-				55DE931427CC4CCF0055CB91 /* ValidationPublishers.swift in Sources */,
+				559F59343074803200F0EC6E /* LegacyImporter.swift in Sources */,
 				551573E2273B5D490048F779 /* ReminderRxApp.swift in Sources */,
 				5551DD0B27668E200002E873 /* Prescriptions.xcdatamodeld in Sources */,
-				556EF1BC27E41C0700246E86 /* PrescriptionProgressView.swift in Sources */,
-				55329F5D276ED51200E70D0B /* EmptyStateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

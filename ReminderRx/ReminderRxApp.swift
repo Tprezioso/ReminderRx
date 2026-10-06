@@ -5,35 +5,22 @@
 //  Created by Thomas Prezioso Jr on 11/9/21.
 //
 
+import ReminderRxKit
+import SwiftData
 import SwiftUI
-import EventKit
 
 @main
 struct ReminderRxApp: App {
-    let persistenceController = PersistenceController.shared
+    private let container = SharedStore.container
+
+    init() {
+        LegacyImporter.importIfNeeded(into: container.mainContext)
+    }
+
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .navigationViewStyle(StackNavigationViewStyle())
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .onAppear { UIApplication.shared.addTapGestureRecognizer() }
+            TemporaryHomeView()
         }
-    }
-}
-
-extension UIApplication {
-    func addTapGestureRecognizer() {
-        guard let window = (connectedScenes.first as? UIWindowScene)?.windows.first else { return }
-        let tapGesture = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
-        tapGesture.requiresExclusiveTouchType = false
-        tapGesture.cancelsTouchesInView = false
-        tapGesture.delegate = self
-        window.addGestureRecognizer(tapGesture)
-    }
-}
-
-extension UIApplication: UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+        .modelContainer(container)
     }
 }
