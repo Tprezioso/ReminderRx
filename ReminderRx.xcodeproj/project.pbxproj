@@ -37,6 +37,7 @@
 		559F59723074855200F0EC6E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59713074855200F0EC6E /* OnboardingView.swift */; };
 		559F59743074855200F0EC6E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59733074855200F0EC6E /* RootView.swift */; };
 		559F597D307486A400F0EC6E /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F597C307486A400F0EC6E /* AppShortcuts.swift */; };
+		559F59A1307490A100F0EC6E /* ScreenshotSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59A0307490A100F0EC6E /* ScreenshotSeeder.swift */; };
 		559F597F3074871400F0EC6E /* HealthImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F597E3074871400F0EC6E /* HealthImportService.swift */; };
 		559F59813074871400F0EC6E /* HealthImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F59803074871400F0EC6E /* HealthImportView.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,7 @@
 		559F59713074855200F0EC6E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		559F59733074855200F0EC6E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		559F597C307486A400F0EC6E /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
+		559F59A0307490A100F0EC6E /* ScreenshotSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotSeeder.swift; sourceTree = "<group>"; };
 		559F597E3074871400F0EC6E /* HealthImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthImportService.swift; sourceTree = "<group>"; };
 		559F59803074871400F0EC6E /* HealthImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthImportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,6 +246,7 @@
 				559F59453074823D00F0EC6E /* NotificationService.swift */,
 				559F59573074844E00F0EC6E /* AppRouter.swift */,
 				559F597C307486A400F0EC6E /* AppShortcuts.swift */,
+				559F59A0307490A100F0EC6E /* ScreenshotSeeder.swift */,
 				559F597E3074871400F0EC6E /* HealthImportService.swift */,
 			);
 			path = Services;
@@ -534,6 +537,7 @@
 				559F59553074842E00F0EC6E /* CelebrationView.swift in Sources */,
 				559F596C3074851300F0EC6E /* HistoryView.swift in Sources */,
 				559F597D307486A400F0EC6E /* AppShortcuts.swift in Sources */,
+				559F59A1307490A100F0EC6E /* ScreenshotSeeder.swift in Sources */,
 				559F594D3074842D00F0EC6E /* Theme.swift in Sources */,
 				559F594F3074842D00F0EC6E /* MedIcon.swift in Sources */,
 				559F59723074855200F0EC6E /* OnboardingView.swift in Sources */,

@@ -1,0 +1,29 @@
+{
+  "versionLocalizationId": "88f65c64-867f-46cb-8455-0bcfe85a568e",
+  "path": ".asc/reports/screenshots-upload/failures-1791420324356583000.json",
+  "deviceType": "IPHONE_67",
+  "displayType": "APP_IPHONE_67",
+  "replace": true,
+  "setId": "f725efb1-9988-4bcf-8a62-8ce91a1896a8",
+  "files": [
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/01-today.png",
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/02-medications.png",
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/03-history.png",
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/04-today-editor.png"
+  ],
+  "pendingFiles": [
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/01-today.png",
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/02-medications.png",
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/03-history.png",
+    "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/04-today-editor.png"
+  ],
+  "failures": [
+    {
+      "fileName": "01-today.png",
+      "filePath": "/private/tmp/claude-501/-Users-thomaspreziosojr-Develop-Swift-iOS-Projects-ReminderRx/95223c08-659c-4469-9684-d9fd7b09170a/scratchpad/shots/iphone/01-today.png",
+      "error": "timed out waiting for asset 6ac00006-0336-8a54-8016-a067c4e17adc delivery: context deadline exceeded"
+    }
+  ],
+  "error": "timed out waiting for asset 6ac00006-0336-8a54-8016-a067c4e17adc delivery: context deadline exceeded",
+  "generatedAt": "2026-10-08T00:45:24Z"
+}

@@ -18,6 +18,9 @@ struct ReminderRxApp: App {
 
     init() {
         LegacyImporter.importIfNeeded(into: container.mainContext)
+        #if DEBUG
+        ScreenshotSeeder.seedIfRequested(into: container.mainContext)
+        #endif
     }
 
     var body: some Scene {
