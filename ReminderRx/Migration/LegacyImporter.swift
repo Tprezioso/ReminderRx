@@ -15,18 +15,24 @@ import UserNotifications
 enum LegacyImporter {
     private static let didImportKey = "didImportLegacyCoreData"
     private static let importedCountKey = "legacyImportedCount"
+    private static let statusKey = "legacyImportStatus"
     private static let logger = Logger(subsystem: "com.Swifttom.ReminderRx", category: "LegacyImporter")
 
     /// How many prescriptions the import brought over, for the "What's new" screen.
     static var importedCount: Int { UserDefaults.standard.integer(forKey: importedCountKey) }
 
+    /// What the last import attempt found, shown in Settings so a failed migration can be diagnosed.
+    static var status: String? { UserDefaults.standard.string(forKey: statusKey) }
+
     static func importIfNeeded(into context: ModelContext, now: Date = .now) {
         let defaults = UserDefaults.standard
-        guard !defaults.bool(forKey: didImportKey) else { return }
+        // Done only once something actually came over. Build 5 also marked an import that found
+        // nothing as done, so those devices look again.
+        guard !(defaults.bool(forKey: didImportKey) && importedCount > 0) else { return }
 
         let storeURL = NSPersistentContainer.defaultDirectoryURL().appending(path: "Prescriptions.sqlite")
         guard FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false)) else {
-            defaults.set(true, forKey: didImportKey)
+            record("No 1.x database found", in: defaults)
             return
         }
 
@@ -42,15 +48,22 @@ enum LegacyImporter {
                 lastDateString: defaults.string(forKey: "lastDateString"),
                 now: now
             )
+            record("Read \(prescriptions.count), imported \(imported)", in: defaults)
+            guard imported > 0 else { return }
             // 1.x reminders used each prescription's UUID as the identifier; the new
             // notification service reschedules everything from the imported data.
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            logger.info("Imported \(imported) legacy prescriptions")
             defaults.set(imported, forKey: importedCountKey)
             defaults.set(true, forKey: didImportKey)
         } catch {
-            // Leave the flag unset so the import is retried on next launch.
-            logger.error("Legacy import failed: \(error)")
+            // Left unfinished so the import is retried on next launch.
+            record("Failed: \(error)", in: defaults)
         }
+    }
+
+    private static func record(_ status: String, in defaults: UserDefaults) {
+        // Notice level so the result is kept in the device log, not just shown while streaming.
+        logger.notice("Legacy import: \(status, privacy: .public)")
+        defaults.set(status, forKey: statusKey)
     }
 }

@@ -43,6 +43,9 @@ struct SettingsView: View {
 
                 Section("About") {
                     LabeledContent("Version", value: Bundle.main.versionString)
+                    if let status = LegacyImporter.status {
+                        LabeledContent("1.x Import", value: status)
+                    }
                     Text("ReminderRx is a reminder and tracking tool. It isn't medical advice — always follow your prescriber's instructions.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
