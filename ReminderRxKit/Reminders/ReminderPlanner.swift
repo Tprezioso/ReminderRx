@@ -216,7 +216,7 @@ public struct ReminderPlanner: Sendable {
             identifier: ReminderKind.keepAlive.identifier("next"),
             fireDate: fireDate,
             title: "Keep your reminders coming",
-            body: "Open ReminderRx so it can schedule your upcoming doses.",
+            body: "Open Script Tracker so it can schedule your upcoming doses.",
             reference: nil,
             category: nil,
             threadID: "app"

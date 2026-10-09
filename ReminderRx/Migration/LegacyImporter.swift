@@ -21,8 +21,11 @@ enum LegacyImporter {
     /// How many prescriptions the import brought over, for the "What's new" screen.
     static var importedCount: Int { UserDefaults.standard.integer(forKey: importedCountKey) }
 
-    /// What the last import attempt found, shown in Settings so a failed migration can be diagnosed.
-    static var status: String? { UserDefaults.standard.string(forKey: statusKey) }
+    /// The last import error, shown in Settings so a failed migration can be diagnosed.
+    /// Other outcomes stay in the device log only.
+    static var failure: String? {
+        UserDefaults.standard.string(forKey: statusKey).flatMap { $0.hasPrefix("Failed") ? $0 : nil }
+    }
 
     static func importIfNeeded(into context: ModelContext, now: Date = .now) {
         let defaults = UserDefaults.standard

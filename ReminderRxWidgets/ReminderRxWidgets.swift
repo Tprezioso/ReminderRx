@@ -290,7 +290,7 @@ private struct StatusMessage: View {
         VStack(alignment: .leading, spacing: 4) {
             if !entry.hasMedications {
                 Image(systemName: "plus.circle.fill").font(.title2).foregroundStyle(.tint)
-                Text("Add a medication in ReminderRx").font(.caption).foregroundStyle(.secondary)
+                Text("Add a medication in Script Tracker").font(.caption).foregroundStyle(.secondary)
             } else if entry.isAllDone {
                 Image(systemName: "checkmark.seal.fill").font(.title2).foregroundStyle(.green)
                 Text("All done for today!").font(.subheadline.bold())

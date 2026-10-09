@@ -59,14 +59,14 @@ struct OnboardingView: View {
             OnboardingPage(
                 hero: AnimatedHero(),
                 title: "Never miss a dose",
-                message: "ReminderRx keeps track of what to take and when, and nudges you if you forget."
+                message: "Script Tracker keeps track of what to take and when, and nudges you if you forget."
             )
         case .whatsNew:
             ScrollView {
                 VStack(spacing: 24) {
                     AnimatedHero().frame(height: 160)
                     VStack(spacing: 8) {
-                        Text("Welcome to ReminderRx 2.0")
+                        Text("Welcome to Script Tracker 2.0")
                             .font(.largeTitle.bold())
                             .multilineTextAlignment(.center)
                         Text("We brought over your \(importedCount) prescription\(importedCount == 1 ? "" : "s"). Here's what's new:")

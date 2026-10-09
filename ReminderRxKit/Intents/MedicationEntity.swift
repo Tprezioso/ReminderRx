@@ -67,7 +67,7 @@ enum MedicationIntentError: Error, CustomLocalizedStringResourceConvertible {
 
     var localizedStringResource: LocalizedStringResource {
         switch self {
-        case .notFound: "That medication couldn't be found in ReminderRx."
+        case .notFound: "That medication couldn't be found in Script Tracker."
         }
     }
 }

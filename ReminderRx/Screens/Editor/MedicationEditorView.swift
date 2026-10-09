@@ -148,7 +148,7 @@ struct MedicationEditorView: View {
                 Toggle("Remind me", isOn: $model.remindersEnabled)
                 if model.remindersEnabled && notificationService.authorizationStatus == .denied {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Notifications are turned off for ReminderRx.")
+                        Text("Notifications are turned off for Script Tracker.")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                         Button("Open Settings") { notificationService.openSystemSettings() }

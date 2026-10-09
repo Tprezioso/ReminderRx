@@ -51,7 +51,7 @@ struct HealthImportView: View {
             ContentUnavailableView(
                 "No medications shared",
                 systemImage: "heart.text.square",
-                description: Text("Add medications in the Health app, then choose which ones ReminderRx can see.")
+                description: Text("Add medications in the Health app, then choose which ones Script Tracker can see.")
             )
         case .loaded(let medications):
             List(medications, selection: $selection) { medication in
@@ -62,7 +62,7 @@ struct HealthImportView: View {
                     VStack(alignment: .leading) {
                         Text(medication.name)
                         if isAlreadyAdded(medication) {
-                            Text("Already in ReminderRx").font(.caption).foregroundStyle(.secondary)
+                            Text("Already in Script Tracker").font(.caption).foregroundStyle(.secondary)
                         }
                     }
                 }
